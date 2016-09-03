@@ -38,6 +38,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);‌;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -45,7 +46,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_OPENGL_LIB;QT_SCRIPT_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtScript;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Third Party\glut-3.7.6-bin;$(ProjectDir)\Third Party\boost_1_55_0;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtOpenGL;$(QTDIR)\include\QtScript;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -54,7 +55,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)\Third Party\glut-3.7.6-bin;$(ProjectDir)\Third Party\boost_1_55_0;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5OpenGLd.lib;opengl32.lib;glu32.lib;Qt5Scriptd.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
@@ -80,6 +81,12 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_extractopentoonz.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MeshOptionDialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_SheetCanvas.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\qrc_extractopentoonz.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
@@ -89,18 +96,43 @@
     <ClCompile Include="GeneratedFiles\Release\moc_extractopentoonz.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MeshOptionDialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_SheetCanvas.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OpenToonz\common\trop\runsmap.cpp" />
+    <ClCompile Include="OpenToonz\gutil.cpp" />
+    <ClCompile Include="OpenToonz\meshbuilder.cpp" />
+    <ClCompile Include="OpenToonz\MeshOptionDialog.cpp" />
+    <ClCompile Include="OpenToonz\meshutils.cpp" />
+    <ClCompile Include="OpenToonz\tbigmemorymanager.cpp" />
+    <ClCompile Include="OpenToonz\tblur.cpp" />
+    <ClCompile Include="OpenToonz\texception.cpp" />
+    <ClCompile Include="OpenToonz\tgeometry.cpp" />
+    <ClCompile Include="OpenToonz\timage.cpp" />
+    <ClCompile Include="OpenToonz\tmeshimage.cpp" />
+    <ClCompile Include="OpenToonz\toperators.cpp" />
+    <ClCompile Include="OpenToonz\tpixel.cpp" />
+    <ClCompile Include="OpenToonz\tpixelutils.cpp" />
+    <ClCompile Include="OpenToonz\traster.cpp" />
+    <ClCompile Include="OpenToonz\trop_borders.cpp" />
+    <ClCompile Include="OpenToonz\tsmartpointer.cpp" />
+    <ClCompile Include="OpenToonz\tstring.cpp" />
+    <ClCompile Include="SheetCanvas.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="extractopentoonz.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing extractopentoonz.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_SCRIPT_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtWidgets"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_SCRIPT_LIB -DQT_WIDGETS_LIB  "-I$(ProjectDir)\Third Party\glut-3.7.6-bin" "-I$(ProjectDir)\Third Party\boost_1_55_0" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtWidgets"</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing extractopentoonz.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_SCRIPT_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtWidgets"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_SCRIPT_LIB -DQT_WIDGETS_LIB  "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtWidgets"</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +149,112 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_extractopentoonz.h" />
+    <ClInclude Include="OpenToonz\common\trop\borders_extractor.h" />
+    <ClInclude Include="OpenToonz\common\trop\borders_extractor.hpp" />
+    <ClInclude Include="OpenToonz\common\trop\pixelselectors.h" />
+    <ClInclude Include="OpenToonz\common\trop\raster_edge_evaluator.h" />
+    <ClInclude Include="OpenToonz\common\trop\raster_edge_evaluator.hpp" />
+    <ClInclude Include="OpenToonz\common\trop\raster_edge_iterator.h" />
+    <ClInclude Include="OpenToonz\common\trop\raster_edge_iterator.hpp" />
+    <ClInclude Include="OpenToonz\common\trop\runsmap.h" />
+    <ClInclude Include="OpenToonz\gutil.h" />
+    <ClInclude Include="OpenToonz\meshbuilder.h" />
+    <ClInclude Include="OpenToonz\meshtexturizer.h" />
+    <ClInclude Include="OpenToonz\meshutils.h" />
+    <ClInclude Include="OpenToonz\plasticdeformer.h" />
+    <ClInclude Include="OpenToonz\plasticdeformerstorage.h" />
+    <ClInclude Include="OpenToonz\plastichandle.h" />
+    <ClInclude Include="OpenToonz\tatomicvar.h" />
+    <ClInclude Include="OpenToonz\tbigmemorymanager.h" />
+    <ClInclude Include="OpenToonz\tcg\alignment.h" />
+    <ClInclude Include="OpenToonz\tcg\base.h" />
+    <ClInclude Include="OpenToonz\tcg\consts.h" />
+    <ClInclude Include="OpenToonz\tcg\containers_reader.h" />
+    <ClInclude Include="OpenToonz\tcg\cyclic.h" />
+    <ClInclude Include="OpenToonz\tcg\edge.h" />
+    <ClInclude Include="OpenToonz\tcg\face.h" />
+    <ClInclude Include="OpenToonz\tcg\hash.h" />
+    <ClInclude Include="OpenToonz\tcg\hpp\mesh.hpp" />
+    <ClInclude Include="OpenToonz\tcg\hpp\polyline_ops.hpp" />
+    <ClInclude Include="OpenToonz\tcg\hpp\sequence_ops.hpp" />
+    <ClInclude Include="OpenToonz\tcg\hpp\triangulate.hpp" />
+    <ClInclude Include="OpenToonz\tcg\iterator_ops.h" />
+    <ClInclude Include="OpenToonz\tcg\list.h" />
+    <ClInclude Include="OpenToonz\tcg\macros.h" />
+    <ClInclude Include="OpenToonz\tcg\mesh.h" />
+    <ClInclude Include="OpenToonz\tcg\mesh_bgl.h" />
+    <ClInclude Include="OpenToonz\tcg\numeric_ops.h" />
+    <ClInclude Include="OpenToonz\tcg\observer_notifier.h" />
+    <ClInclude Include="OpenToonz\tcg\point.h" />
+    <ClInclude Include="OpenToonz\tcg\point_ops.h" />
+    <ClInclude Include="OpenToonz\tcg\polyline_ops.h" />
+    <ClInclude Include="OpenToonz\tcg\poly_ops.h" />
+    <ClInclude Include="OpenToonz\tcg\ptr.h" />
+    <ClInclude Include="OpenToonz\tcg\sequence_ops.h" />
+    <ClInclude Include="OpenToonz\tcg\sfinae.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_containers_reader.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_cyclic.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_edge.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_face.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_hash.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_iterator_ops.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_list.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_mesh.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_mesh_bgl.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_misc.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_observer_notifier.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_point.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_polylineops.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_sequence_ops.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_traits.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_triangulate.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_vertex.h" />
+    <ClInclude Include="OpenToonz\tcg\traits.h" />
+    <ClInclude Include="OpenToonz\tcg\triangulate.h" />
+    <ClInclude Include="OpenToonz\tcg\vertex.h" />
+    <ClInclude Include="OpenToonz\tcg_wrap.h" />
+    <ClInclude Include="OpenToonz\tcommon.h" />
+    <ClInclude Include="OpenToonz\tconvert.h" />
+    <ClInclude Include="OpenToonz\texception.h" />
+    <ClInclude Include="OpenToonz\tgeometry.h" />
+    <ClInclude Include="OpenToonz\tgl.h" />
+    <ClInclude Include="OpenToonz\timage.h" />
+    <ClInclude Include="OpenToonz\tmachine.h" />
+    <ClInclude Include="OpenToonz\tmeshimage.h" />
+    <ClInclude Include="OpenToonz\tnztypes.h" />
+    <ClInclude Include="OpenToonz\tpixel.h" />
+    <ClInclude Include="OpenToonz\tpixelcm.h" />
+    <ClInclude Include="OpenToonz\tpixelgr.h" />
+    <ClInclude Include="OpenToonz\tpixelutils.h" />
+    <ClInclude Include="OpenToonz\traster.h" />
+    <ClInclude Include="OpenToonz\trastercm.h" />
+    <ClInclude Include="OpenToonz\trasterimage.h" />
+    <ClInclude Include="OpenToonz\trop.h" />
+    <ClInclude Include="OpenToonz\trop_borders.h" />
+    <ClInclude Include="OpenToonz\tsmartpointer.h" />
+    <ClInclude Include="OpenToonz\ttexturesstorage.h" />
+    <ClInclude Include="OpenToonz\tthreadmessage.h" />
+    <ClInclude Include="OpenToonz\tutil.h" />
+    <CustomBuild Include="SheetCanvas.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing SheetCanvas.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_SCRIPT_LIB -DQT_WIDGETS_LIB "-I$(ProjectDir)\Third Party\glut-3.7.6-bin" "-I$(ProjectDir)\Third Party\boost_1_55_0" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtWidgets"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing SheetCanvas.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_SCRIPT_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtWidgets"</Command>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\MeshOptionDialog.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing MeshOptionDialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_SCRIPT_LIB -DQT_WIDGETS_LIB  "-I$(ProjectDir)\Third Party\glut-3.7.6-bin" "-I$(ProjectDir)\Third Party\boost_1_55_0" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtWidgets"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing MeshOptionDialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_SCRIPT_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtWidgets"</Command>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="extractopentoonz.qrc">

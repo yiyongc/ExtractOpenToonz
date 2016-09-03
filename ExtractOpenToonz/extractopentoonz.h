@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_extractopentoonz.h"
+#include <QVBoxLayout>
 
 class ExtractOpenToonz : public QMainWindow
 {
