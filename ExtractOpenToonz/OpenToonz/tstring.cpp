@@ -2,7 +2,7 @@
 
 #include "tconvert.h"
 //#include "texception.h"
-//#include "tfilepath.h"
+#include "tfilepath.h"
 #include "texception.h"
 
 #ifndef TNZCORE_LIGHT
@@ -64,10 +64,10 @@ std::string toString(std::wstring ws)
 #endif
 }
 
-//std::string toString(const TFilePath &fp)
-//{
-//	return toString(fp.getWideString());
-//}
+std::string toString(const TFilePath &fp)
+{
+	return toString(fp.getWideString());
+}
 
 std::wstring toWideString(int x)
 {

@@ -167,6 +167,117 @@
     <ClCompile Include="GeneratedFiles\Release\moc_menubarcommand.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="OpenToonz\menubarcommand.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_dvdialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_dvdialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tmsgcore.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_tmsgcore.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\dvdialog.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_lineedit.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_lineedit.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_fxsettings.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_fxsettings.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tabbar.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_tabbar.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_framenavigator.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_framenavigator.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_intfield.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_intfield.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_paramfield.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_paramfield.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tundo.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_tundo.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tfxhandle.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_tfxhandle.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_swatchviewer.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_swatchviewer.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tthread.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_tthread.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tcheckboard.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_fxhistogramrender.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_fxhistogramrender.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_txshsimplelevel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_txshsimplelevel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_txsheethandle.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_txsheethandle.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_txshlevel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_txshlevel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_preferences.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_preferences.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="extractopentoonz.h">
@@ -195,6 +306,57 @@
     </CustomBuild>
     <CustomBuild Include="OpenToonz\menubarcommand.h">
       <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\dvdialog.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\tmsgcore.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\lineedit.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\fxsettings.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\tabbar.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\framenavigator.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\intfield.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\paramfield.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\tundo.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\toonz\tfxhandle.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\swatchviewer.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\tthread.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\fxhistogramrender.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\toonz\txshsimplelevel.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\toonz\txsheethandle.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\toonz\txshlevel.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\toonz\preferences.h">
+      <Filter>OpenToonz\toonz</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -551,6 +713,69 @@
     </ClInclude>
     <ClInclude Include="OpenToonz\tproperty.h">
       <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonzfolders.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tfx.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\ttile.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\timagecache.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tnotanimatableparam.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tspectrumparam.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tspectrum.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tparamset.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\ttonecurveparam.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tstroke.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\historytypes.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\trenderer.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\trasterfx.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\trasterfxrenderdata.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\imagemanager.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\timageinfo.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\txshleveltypes.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\palettecmd.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\tpalette.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\levelproperties.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\toonzfolders.h">
+      <Filter>OpenToonz\toonz</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

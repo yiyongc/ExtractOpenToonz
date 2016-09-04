@@ -117,7 +117,7 @@ namespace TRop
 ///*! Two variables \b TPixel32 describe the checkboard color, 
 //      \b TDimension are checkboard dimension and \b TPoinD the position
 //  \include checkBoard_ex.cpp*/
-//void checkBoard(TRasterP rout, const TPixel32 &, const TPixel32 &, const TDimensionD &, const TPointD &);
+void checkBoard(TRasterP rout, const TPixel32 &, const TPixel32 &, const TDimensionD &, const TPointD &);
 //
 ////! Make the image over of the \b up raster on the \b dn raster and put the resulting raster in \b rout
 ///*! \include over_ex1.cpp*/

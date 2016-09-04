@@ -343,14 +343,14 @@ TPixel32 toPixel32(const TPixel64 &src)
 //
 ////-----------------------------------------------------------------------------
 //
-//TPixel64 toPixel64(const TPixel32 &src)
-//{
-//	return TPixelRGBM64(
-//		ushortFromByte(src.r),
-//		ushortFromByte(src.g),
-//		ushortFromByte(src.b),
-//		ushortFromByte(src.m));
-//}
+TPixel64 toPixel64(const TPixel32 &src)
+{
+	return TPixelRGBM64(
+		ushortFromByte(src.r),
+		ushortFromByte(src.g),
+		ushortFromByte(src.b),
+		ushortFromByte(src.m));
+}
 //
 ////-----------------------------------------------------------------------------
 //

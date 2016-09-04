@@ -8,7 +8,7 @@
 //// TnzCore includes
 //#include "gutil.h"
 //#include "tpixelutils.h"
-//#include "tfilepath.h"
+#include "tfilepath.h"
 //#include "tfiletype.h"
 //#include "tstroke.h"
 //#include "tcurves.h"
@@ -224,10 +224,10 @@ TRaster32P rasterFromQPixmap(QPixmap pixmap, bool premultiply, bool mirror) //no
 //
 ////-----------------------------------------------------------------------------
 //
-//QString toQString(const TFilePath &path)
-//{
-//	return QString::fromStdWString(path.getWideString());
-//}
+QString toQString(const TFilePath &path)
+{
+	return QString::fromStdWString(path.getWideString());
+}
 //
 ////-----------------------------------------------------------------------------
 //
@@ -398,24 +398,24 @@ TRaster32P rasterFromQPixmap(QPixmap pixmap, bool premultiply, bool mirror) //no
 //// TabBarContainter
 ////-----------------------------------------------------------------------------
 //
-//TabBarContainter::TabBarContainter(QWidget *parent)
-//	: QFrame(parent)
-//{
-//	setObjectName("TabBarContainer");
-//	setFrameStyle(QFrame::StyledPanel);
-//}
-//
+TabBarContainter::TabBarContainter(QWidget *parent)
+	: QFrame(parent)
+{
+	setObjectName("TabBarContainer");
+    setFrameStyle(QFrame::StyledPanel);
+}
+
 ////-----------------------------------------------------------------------------
-//
-//void TabBarContainter::paintEvent(QPaintEvent *event)
-//{
-//	QPainter p(this);
-//	p.setPen(QColor(120, 120, 120));
-//	p.drawLine(0, height() - 2, width(), height() - 2);
-//	p.setPen(Qt::white);
-//	p.drawLine(0, height() - 1, width(), height() - 1);
-//}
-//
+
+void TabBarContainter::paintEvent(QPaintEvent *event)
+{
+	QPainter p(this);
+	p.setPen(QColor(120, 120, 120));
+	p.drawLine(0, height() - 2, width(), height() - 2);
+	p.setPen(Qt::white);
+	p.drawLine(0, height() - 1, width(), height() - 1);
+}
+
 ////=============================================================================
 //// ToolBarContainer
 ////-----------------------------------------------------------------------------

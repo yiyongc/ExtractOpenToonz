@@ -95,7 +95,7 @@ TRaster32P rasterFromQPixmap(QPixmap pixmap, bool premultiply = true, bool mirro
 //
 //inline QSize DVAPI dimension2QSize(const TDimension &sz) { return QSize(sz.lx, sz.ly); }
 //inline TDimension DVAPI qsize2Dimension(const QSize &sz) { return TDimension(sz.width(), sz.height()); }
-//QString DVAPI toQString(const TFilePath &path);
+QString toQString(const TFilePath &path);
 //bool DVAPI isSpaceString(const QString &str);
 //bool DVAPI isValidFileName(const QString &fileName);
 //bool DVAPI isValidFileName_message(const QString &fileName);
@@ -132,14 +132,14 @@ TRaster32P rasterFromQPixmap(QPixmap pixmap, bool premultiply = true, bool mirro
 // using the styleSheet.
 // It is also used to take 6px on the left before the tabBar
 
-//class DVAPI TabBarContainter : public QFrame
-//{
-//public:
-//	TabBarContainter(QWidget *parent = 0);
-//
-//protected:
-//	void paintEvent(QPaintEvent *event);
-//};
+class TabBarContainter : public QFrame
+{
+public:
+	TabBarContainter(QWidget *parent = 0);
+
+protected:
+	void paintEvent(QPaintEvent *event);
+};
 
 //-----------------------------------------------------------------------------
 // This widget is only used to set the background color of the playToolBar

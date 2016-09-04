@@ -23,15 +23,15 @@
     if \b t = 1, it returns \b b;
     No check is performed.
 */
-//template <class T>
-//inline T blend(const T &a, const T &b, double t)
-//{
-//	return T(
-//		troundp((1 - t) * a.r + t * b.r),
-//		troundp((1 - t) * a.g + t * b.g),
-//		troundp((1 - t) * a.b + t * b.b),
-//		troundp((1 - t) * a.m + t * b.m));
-//}
+template <class T>
+inline T blend(const T &a, const T &b, double t)
+{
+	return T(
+	troundp((1 - t) * a.r + t * b.r),
+	troundp((1 - t) * a.g + t * b.g),
+	troundp((1 - t) * a.b + t * b.b),
+	troundp((1 - t) * a.m + t * b.m));
+}
 //
 ////-----------------------------------------------------------------------------
 //
@@ -387,26 +387,26 @@ inline void premult(TPixel64 &pix)
 //
 ////-----------------------------------------------------------------------------
 //
-//inline TPixel32 premultiply(const TPixel32 &pix)
-//{
-//	const int MAGICFAC = (257U * 256U + 1U);
-//	UINT fac = MAGICFAC * pix.m;
-//
-//	return TPixel32(
-//		((UINT)(pix.r * fac + (1U << 23)) >> 24),
-//		((UINT)(pix.g * fac + (1U << 23)) >> 24),
-//		((UINT)(pix.b * fac + (1U << 23)) >> 24),
-//		pix.m);
-//}
-//
-//inline TPixel64 premultiply(const TPixel64 &pix)
-//{
-//	return TPixel64(
-//		pix.r * pix.m / 65535.0,
-//		pix.g * pix.m / 65535.0,
-//		pix.b * pix.m / 65535.0,
-//		pix.m);
-//}
+inline TPixel32 premultiply(const TPixel32 &pix)
+{
+	const int MAGICFAC = (257U * 256U + 1U);
+	UINT fac = MAGICFAC * pix.m;
+
+	return TPixel32(
+		((UINT)(pix.r * fac + (1U << 23)) >> 24),
+		((UINT)(pix.g * fac + (1U << 23)) >> 24),
+		((UINT)(pix.b * fac + (1U << 23)) >> 24),
+		pix.m);
+}
+
+inline TPixel64 premultiply(const TPixel64 &pix)
+{
+	return TPixel64(
+		pix.r * pix.m / 65535.0,
+		pix.g * pix.m / 65535.0,
+		pix.b * pix.m / 65535.0,
+		pix.m);
+}
 //
 //inline TPixel32 depremultiply(const TPixel32 &pix)
 //{
@@ -471,7 +471,7 @@ TPixel32 toPixel32(const TPixel64 &);
 //TPixel32 toPixel32(const TPixelD &);
 //TPixel32 toPixel32(const TPixelGR8 &);
 //
-//TPixel64 toPixel64(const TPixel32 &);
+TPixel64 toPixel64(const TPixel32 &);
 //TPixel64 toPixel64(const TPixelD &);
 //TPixel64 toPixel64(const TPixelGR8 &);
 //

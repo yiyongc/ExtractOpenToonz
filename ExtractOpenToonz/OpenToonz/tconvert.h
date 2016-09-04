@@ -26,7 +26,7 @@ std::string toString(unsigned long v);
 std::string toString(unsigned long long v);
 std::string toString(double v, int prec = -1);
 std::string toString(std::wstring s);
-//std::string toString(const TFilePath &fp);
+std::string toString(const TFilePath &fp);
 std::string toString(void *p);
 
 int toInt(std::string s);
