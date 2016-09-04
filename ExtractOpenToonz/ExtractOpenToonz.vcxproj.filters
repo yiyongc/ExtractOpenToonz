@@ -134,6 +134,15 @@
     <ClCompile Include="GeneratedFiles\Release\moc_SheetCanvas.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_plastictool.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_plastictool.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tparam.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="extractopentoonz.h">
@@ -150,6 +159,9 @@
     </CustomBuild>
     <CustomBuild Include="SheetCanvas.h">
       <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\plastictool.h">
+      <Filter>OpenToonz</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -413,6 +425,27 @@
     </ClInclude>
     <ClInclude Include="OpenToonz\common\trop\borders_extractor.hpp">
       <Filter>OpenToonz\common\trop</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tproperty.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tparamchange.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tdoubleparamrelayproperty.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tdoubleparam.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tparam.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tpersist.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tfilepath.h">
+      <Filter>OpenToonz</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
