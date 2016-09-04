@@ -48,6 +48,12 @@
     <Filter Include="OpenToonz\common\trop">
       <UniqueIdentifier>{c560363c-7b6a-45e5-bb94-aff309d506be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OpenToonz\tools">
+      <UniqueIdentifier>{5ee7557b-ed73-48f3-af15-44dca0b81052}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenToonz\toonz">
+      <UniqueIdentifier>{5e9e1fee-fdb5-4846-8a6e-32e7ec8f4a99}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -143,6 +149,24 @@
     <ClCompile Include="OpenToonz\tparam.cpp">
       <Filter>OpenToonz</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tooloptions.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_tooloptions.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_checkbox.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_checkbox.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_menubarcommand.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_menubarcommand.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="extractopentoonz.h">
@@ -161,6 +185,15 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="OpenToonz\plastictool.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\tools\tooloptions.h">
+      <Filter>OpenToonz\tools</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\checkbox.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\menubarcommand.h">
       <Filter>OpenToonz</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -426,9 +459,6 @@
     <ClInclude Include="OpenToonz\common\trop\borders_extractor.hpp">
       <Filter>OpenToonz\common\trop</Filter>
     </ClInclude>
-    <ClInclude Include="OpenToonz\tproperty.h">
-      <Filter>OpenToonz</Filter>
-    </ClInclude>
     <ClInclude Include="OpenToonz\tparamchange.h">
       <Filter>OpenToonz</Filter>
     </ClInclude>
@@ -445,6 +475,81 @@
       <Filter>OpenToonz</Filter>
     </ClInclude>
     <ClInclude Include="OpenToonz\tfilepath.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\plasticskeleton.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\plasticskeletondeformation.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tdoublekeyframe.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tcg\any_iterator.h">
+      <Filter>OpenToonz\tcg</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tcg\tcg_any_iterator.h">
+      <Filter>OpenToonz\tcg</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\plasticvisualsettings.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\plasticvertexselection.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\multipleselection.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\selection.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tools\cursors.h">
+      <Filter>OpenToonz\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tools\tool.h">
+      <Filter>OpenToonz\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\tstageobjectid.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\txsheet.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\imagepainter.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\tapplication.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tsound.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\txshcolumn.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tcolumnset.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\ttoonzimage.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\tstageobject.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tcg\controlled_access.h">
+      <Filter>OpenToonz\tcg</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tcg\tcg_controlled_access.h">
+      <Filter>OpenToonz\tcg</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\tstageobjectkeyframe.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tcg\tcg_base.h">
+      <Filter>OpenToonz\tcg</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tproperty.h">
       <Filter>OpenToonz</Filter>
     </ClInclude>
   </ItemGroup>

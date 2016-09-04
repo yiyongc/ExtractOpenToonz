@@ -12,12 +12,12 @@
 #include "tdoubleparamrelayproperty.h"
 
 // TnzExt includes
-#include "ext/plasticskeleton.h"
-#include "ext/plasticskeletondeformation.h"
-#include "ext/plasticvisualsettings.h"
+#include "plasticskeleton.h"
+#include "plasticskeletondeformation.h"
+#include "plasticvisualsettings.h"
 
 // TnzQt includes
-#include "toonzqt/plasticvertexselection.h"
+#include "plasticvertexselection.h"
 
 // TnzTools includes
 #include "tools/tool.h"

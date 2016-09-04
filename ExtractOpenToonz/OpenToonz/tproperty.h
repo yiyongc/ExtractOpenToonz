@@ -259,7 +259,9 @@ public:
 
   void setValue(std::wstring v) { m_value = v; }
   std::wstring getValue() const { return m_value; }
-  std::string getValueAsString() override { return ::to_string(m_value); }
+  std::string getValueAsString() override { 
+	  //return std::to_string(m_value); 
+  }
   void accept(Visitor &v) override { v.visit(this); };
 
 private:
@@ -278,7 +280,9 @@ public:
   void setValue(std::wstring v) { m_value = v; }
   std::wstring getValue() const { return m_value; }
 
-  std::string getValueAsString() override { return ::to_string(m_value); }
+  std::string getValueAsString() override { 
+	  //return std::to_string(m_value); 
+  }
 
   void accept(Visitor &v) override { v.visit(this); };
 
@@ -298,7 +302,9 @@ public:
   void setValue(void *v) { m_value = v; }
   void *getValue() const { return m_value; }
 
-  std::string getValueAsString() override { return ::to_string(m_value); }
+  std::string getValueAsString() override { 
+	  //return std::to_string(m_value); 
+  }
 
   void accept(Visitor &v) override { v.visit(this); };
 
@@ -365,7 +371,7 @@ public:
     return (m_index < 0) ? L"" : m_range[m_index];
   }
   std::string getValueAsString() override {
-    return ::to_string(m_range[m_index]);
+	  //return std::to_string(m_range[m_index]);
   }
   int getIndex() const { return m_index; }
 
