@@ -89,7 +89,7 @@ TRaster32P rasterFromQPixmap(QPixmap pixmap, bool premultiply = true, bool mirro
 
 //-----------------------------------------------------------------------------
 //QIcon DVAPI createQIcon(const char *iconSVGName);
-//QIcon DVAPI createQIconPNG(const char *iconPNGName);
+QIcon createQIconPNG(const char *iconPNGName);
 //QIcon DVAPI createQIconOnOff(const char *iconSVGName, bool withOver = true);
 //QIcon DVAPI createQIconOnOffPNG(const char *iconPNGName, bool withOver = true);
 //

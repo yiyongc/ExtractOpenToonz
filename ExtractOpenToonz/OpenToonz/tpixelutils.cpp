@@ -9,17 +9,17 @@
 
 //-----------------------------------------------------------------------------
 
-//namespace
-//{
-//int byteCrop(int v)
-//{
-//	return (unsigned int)v <= 255 ? v : v > 255 ? 255 : 0;
-//}
-//int wordCrop(int v)
-//{
-//	return (unsigned int)v <= 65535 ? v : v > 65535 ? 65535 : 0;
-//}
-//} // namespace
+namespace
+{
+int byteCrop(int v)
+{
+	return (unsigned int)v <= 255 ? v : v > 255 ? 255 : 0;
+}
+int wordCrop(int v)
+{
+	return (unsigned int)v <= 65535 ? v : v > 65535 ? 65535 : 0;
+}
+} // namespace
 //
 ////-----------------------------------------------------------------------------
 //
@@ -324,15 +324,15 @@ TPixel32 toPixel32(const TPixel64 &src)
 
 //-----------------------------------------------------------------------------
 
-//TPixel32 toPixel32(const TPixelD &src)
-//{
-//	const double factor = 255.0;
-//	return TPixel32(
-//		byteCrop(tround(src.r * factor)),
-//		byteCrop(tround(src.g * factor)),
-//		byteCrop(tround(src.b * factor)),
-//		byteCrop(tround(src.m * factor)));
-//}
+TPixel32 toPixel32(const TPixelD &src)
+{
+	const double factor = 255.0;
+	return TPixel32(
+		byteCrop(tround(src.r * factor)),
+		byteCrop(tround(src.g * factor)),
+		byteCrop(tround(src.b * factor)),
+		byteCrop(tround(src.m * factor)));
+}
 //
 ////-----------------------------------------------------------------------------
 //
@@ -354,15 +354,15 @@ TPixel64 toPixel64(const TPixel32 &src)
 //
 ////-----------------------------------------------------------------------------
 //
-//TPixel64 toPixel64(const TPixelD &src)
-//{
-//	const double factor = 65535.0;
-//	return TPixel64(
-//		wordCrop(tround(src.r * factor)),
-//		wordCrop(tround(src.g * factor)),
-//		wordCrop(tround(src.b * factor)),
-//		wordCrop(tround(src.m * factor)));
-//}
+TPixel64 toPixel64(const TPixelD &src)
+{
+	const double factor = 65535.0;
+	return TPixel64(
+		wordCrop(tround(src.r * factor)),
+		wordCrop(tround(src.g * factor)),
+		wordCrop(tround(src.b * factor)),
+		wordCrop(tround(src.m * factor)));
+}
 //
 ////-----------------------------------------------------------------------------
 //
@@ -374,19 +374,19 @@ TPixel64 toPixel64(const TPixel32 &src)
 //
 ////-----------------------------------------------------------------------------
 //
-//TPixelD toPixelD(const TPixel32 &src)
-//{
-//	const double factor = 1.0 / 255.0;
-//	return TPixelD(factor * src.r, factor * src.g, factor * src.b, factor * src.m);
-//}
+TPixelD toPixelD(const TPixel32 &src)
+{
+	const double factor = 1.0 / 255.0;
+	return TPixelD(factor * src.r, factor * src.g, factor * src.b, factor * src.m);
+}
 //
 ////-----------------------------------------------------------------------------
 //
-//TPixelD toPixelD(const TPixel64 &src)
-//{
-//	const double factor = 1.0 / 65535.0;
-//	return TPixelD(factor * src.r, factor * src.g, factor * src.b, factor * src.m);
-//}
+TPixelD toPixelD(const TPixel64 &src)
+{
+	const double factor = 1.0 / 65535.0;
+	return TPixelD(factor * src.r, factor * src.g, factor * src.b, factor * src.m);
+}
 //
 ////-----------------------------------------------------------------------------
 //

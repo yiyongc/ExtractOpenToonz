@@ -171,20 +171,20 @@ TRaster32P rasterFromQPixmap(QPixmap pixmap, bool premultiply, bool mirror) //no
 //
 ////-----------------------------------------------------------------------------
 //
-//QIcon createQIconPNG(const char *iconPNGName)
-//{
-//	QString normal = QString(":Resources/") + iconPNGName + ".png";
-//	QString click = QString(":Resources/") + iconPNGName + "_click.png";
-//	QString over = QString(":Resources/") + iconPNGName + "_over.png";
-//
-//	QIcon icon;
-//	icon.addFile(normal, QSize(), QIcon::Normal, QIcon::Off);
-//	icon.addFile(click, QSize(), QIcon::Normal, QIcon::On);
-//	icon.addFile(over, QSize(), QIcon::Active);
-//
-//	return icon;
-//}
-//
+QIcon createQIconPNG(const char *iconPNGName)
+{
+	QString normal = QString(":Resources/") + iconPNGName + ".png";
+	QString click = QString(":Resources/") + iconPNGName + "_click.png";
+	QString over = QString(":Resources/") + iconPNGName + "_over.png";
+
+	QIcon icon;
+	icon.addFile(normal, QSize(), QIcon::Normal, QIcon::Off);
+	icon.addFile(click, QSize(), QIcon::Normal, QIcon::On);
+	icon.addFile(over, QSize(), QIcon::Active);
+
+	return icon;
+}
+
 ////-----------------------------------------------------------------------------
 //
 //QIcon createQIconOnOff(const char *iconSVGName, bool withOver)

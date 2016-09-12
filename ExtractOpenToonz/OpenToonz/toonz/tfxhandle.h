@@ -51,7 +51,7 @@ public:
   QString getPreviousActionString() { return m_previousActionString; }
 
 public slots:
-  void onColumnChanged();
+  //void onColumnChanged();
 
 signals:
   void fxSwitched();

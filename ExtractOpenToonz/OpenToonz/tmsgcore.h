@@ -67,7 +67,7 @@ Q_SIGNALS:
 
 public Q_SLOTS:
 
-  void OnNewConnection();
-  void OnReadyRead();
-  void OnDisconnected();
+  //void OnNewConnection();
+  //void OnReadyRead();
+  //void OnDisconnected();
 };

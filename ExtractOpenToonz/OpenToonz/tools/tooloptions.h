@@ -252,13 +252,13 @@ protected:
   bool isCurrentObjectSplined() const;
 
 protected slots:
-  void onFrameSwitched() { updateStatus(); }
-  // update the object list in combobox
-  void updateStageObjectComboItems();
-  // syncronize the current item in the combobox to the selected stage object
-  void syncCurrentStageObjectComboItem();
-  // change the current stage object when user changes it via combobox by hand
-  void onCurrentStageObjectComboActivated(int index);
+  //void onFrameSwitched() { updateStatus(); }
+  //// update the object list in combobox
+  //void updateStageObjectComboItems();
+  //// syncronize the current item in the combobox to the selected stage object
+  //void syncCurrentStageObjectComboItem();
+  //// change the current stage object when user changes it via combobox by hand
+  //void onCurrentStageObjectComboActivated(int index);
 };
 
 //=============================================================================
@@ -351,9 +351,9 @@ public:
   void onPropertyChanged();
 
 protected slots:
-  void onScaleXValueChanged();
-  void onScaleYValueChanged();
-  void onSetSaveboxCheckboxChanged(bool);
+  //void onScaleXValueChanged();
+  //void onScaleYValueChanged();
+  //void onSetSaveboxCheckboxChanged(bool);
 };
 
 //=============================================================================
@@ -381,9 +381,9 @@ public:
   void updateStatus();
 
 protected slots:
-  void onShapeValueChanged();
-  void onPencilModeToggled(bool);
-  void onJoinStyleChanged(int);
+  //void onShapeValueChanged();
+  //void onPencilModeToggled(bool);
+  //void onJoinStyleChanged(int);
 };
 
 //=============================================================================
@@ -404,7 +404,7 @@ public:
   void updateStatus();
 
 protected slots:
-  void onFieldChanged();
+  //void onFieldChanged();
 };
 
 //=============================================================================
@@ -426,7 +426,7 @@ public:
   void updateStatus();
 
 protected slots:
-  void onColorModeChanged();
+  //void onColorModeChanged();
 };
 
 //=============================================================================
@@ -452,10 +452,10 @@ public:
   void updateStatus();
 
 protected slots:
-  void onColorModeChanged();
-  void onToolTypeChanged();
-  void onOnionModeToggled(bool);
-  void onMultiFrameModeToggled(bool);
+  //void onColorModeChanged();
+  //void onToolTypeChanged();
+  //void onOnionModeToggled(bool);
+  //void onMultiFrameModeToggled(bool);
 };
 
 //=============================================================================
@@ -490,9 +490,9 @@ public:
 
 protected slots:
 
-  void onPencilModeToggled(bool);
-  void onAddPreset();
-  void onRemovePreset();
+  //void onPencilModeToggled(bool);
+  //void onAddPreset();
+  //void onRemovePreset();
 };
 
 //=============================================================================
@@ -516,9 +516,9 @@ public:
   void updateStatus();
 
 protected slots:
-  void onPencilModeToggled(bool);
-  void onToolTypeChanged();
-  void onColorModeChanged();
+  //void onPencilModeToggled(bool);
+  //void onToolTypeChanged();
+  //void onColorModeChanged();
 };
 
 //=============================================================================
@@ -575,9 +575,9 @@ public:
   void updateStatus();
 
 protected slots:
-  void onToolTypeChanged();
-  void onToolModeChanged();
-  void onJoinStrokesModeChanged();
+  //void onToolTypeChanged();
+  //void onToolModeChanged();
+  //void onJoinStrokesModeChanged();
 };
 
 //=============================================================================
@@ -598,7 +598,7 @@ public:
                           PaletteController *paletteController);
   void updateStatus();
 protected slots:
-  void updateRealTimePickLabel(const QColor &);
+  //void updateRealTimePickLabel(const QColor &);
 };
 
 //=============================================================================
@@ -619,7 +619,7 @@ public:
                             PaletteController *paletteController);
   void updateStatus();
 protected slots:
-  void updateRealTimePickLabel(const int, const int, const int);
+  //void updateRealTimePickLabel(const int, const int, const int);
 };
 
 //-----------------------------------------------------------------------------
@@ -643,9 +643,9 @@ protected:
 
 public slots:
 
-  void onToolSwitched();
-  void onToolChanged();
-  void onStageObjectChange();
+  //void onToolSwitched();
+  //void onToolChanged();
+  //void onStageObjectChange();
 
   // signals:
 

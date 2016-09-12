@@ -298,8 +298,8 @@ public:
   QSize getPreferedSize() override { return QSize(260, 28); }
 
 protected slots:
-  void onChange(bool);
-  void onKeyToggled();
+  //void onChange(bool);
+  //void onKeyToggled();
 };
 
 //=============================================================================
@@ -322,8 +322,8 @@ public:
   void setPrecision(int precision) override;
 
 protected slots:
-  void onChange(bool);
-  void onKeyToggled();
+  //void onChange(bool);
+  //void onKeyToggled();
 };
 
 //=============================================================================
@@ -346,8 +346,8 @@ public:
   QSize getPreferedSize() override { return QSize(270, 28); }
 
 protected slots:
-  void onChange(bool);
-  void onKeyToggled();
+  //void onChange(bool);
+  //void onKeyToggled();
 };
 
 //=============================================================================
@@ -375,8 +375,8 @@ protected:
   void setParams();
 
 protected slots:
-  void onChange(const TPixel32 &value, bool isDragging);
-  void onKeyToggled();
+  //void onChange(const TPixel32 &value, bool isDragging);
+  //void onKeyToggled();
 };
 
 //=============================================================================
@@ -392,7 +392,7 @@ public:
                 PixelParamField *field2);
 
 protected slots:
-  void onButtonClicked();
+  //void onButtonClicked();
 };
 
 //=============================================================================
@@ -416,10 +416,10 @@ public:
   QSize getPreferedSize() override { return QSize(390, 60); }
 
 protected slots:
-  void onKeyToggled();
-  void onChange(bool isDragging);
-  void onKeyAdded(int keyIndex);
-  void onKeyRemoved(int keyIndex);
+  //void onKeyToggled();
+  //void onChange(bool isDragging);
+  //void onKeyAdded(int keyIndex);
+  //void onKeyRemoved(int keyIndex);
 };
 
 //=============================================================================
@@ -442,7 +442,7 @@ public:
   QSize getPreferedSize() override { return QSize(150, 20); }
 
 protected slots:
-  void onChange(const QString &str);
+  //void onChange(const QString &str);
 };
 
 //=============================================================================
@@ -465,7 +465,7 @@ public:
   QSize getPreferedSize() override { return QSize(20, 10); }
 
 protected slots:
-  void onToggled(bool checked);
+  //void onToggled(bool checked);
 
   /*-- visibleToggle UIで使用する --*/
 signals:
@@ -494,7 +494,7 @@ public:
   QSize getPreferedSize() override { return QSize(50, 28); }
 
 protected slots:
-  void onChange(bool isDragging = false);
+  //void onChange(bool isDragging = false);
 };
 
 //=============================================================================
@@ -516,7 +516,7 @@ public:
 
   QSize getPreferedSize() override { return QSize(100, 20); }
 protected slots:
-  void onChange();
+  //void onChange();
 };
 
 //=============================================================================
@@ -540,14 +540,14 @@ public:
   QSize getPreferedSize() override { return QSize(400, 380); }
 
 protected slots:
-  void onChannelChanged(int);
+  //void onChannelChanged(int);
 
-  void onChange(bool isDragging);
-  void onPointAdded(int index);
-  void onPointRemoved(int index);
-  void onIsLinearChanged(bool);
+  //void onChange(bool isDragging);
+  //void onPointAdded(int index);
+  //void onPointRemoved(int index);
+  //void onIsLinearChanged(bool);
 
-  void onKeyToggled();
+  //void onKeyToggled();
 };
 
 namespace component {
@@ -567,7 +567,7 @@ public:
   void update(int frame) override;
 
 protected slots:
-  void update_value(QString const &text);  // could not use MACROs for slots
+  //void update_value(QString const &text);  // could not use MACROs for slots
 };
 
 class Slider_double final : public ParamField {
@@ -586,7 +586,7 @@ public:
   void update(int frame) override;
 
 protected slots:
-  void update_value(int);
+  //void update_value(int);
 };
 
 class SpinBox_double final : public ParamField {
@@ -605,7 +605,7 @@ public:
   void update(int frame) override;
 
 protected slots:
-  void update_value(double);
+  //void update_value(double);
 };
 }
 
@@ -626,7 +626,7 @@ public:
   void update(int frame) override;
 
 protected slots:
-  void update_value(QString const &text);
+  //void update_value(QString const &text);
 };
 
 class Slider_int final : public ParamField {
@@ -645,7 +645,7 @@ public:
   void update(int frame) override;
 
 protected slots:
-  void update_value(int);
+  //void update_value(int);
 };
 
 class SpinBox_int final : public ParamField {
@@ -664,7 +664,7 @@ public:
   void update(int frame) override;
 
 protected slots:
-  void update_value(int);
+  //void update_value(int);
 };
 
 }  // end of namespace component
@@ -686,7 +686,7 @@ public:
   void update(int frame) override;
 
 protected slots:
-  void update_value(int);
+  //void update_value(int);
 };
 
 }  // end of namespace component
@@ -708,7 +708,7 @@ public:
   void update(int frame) override;
 
 protected slots:
-  void update_value(int);
+  //void update_value(int);
 };
 
 class ComboBox_enum final : public ParamField {
@@ -727,7 +727,7 @@ public:
   void update(int frame) override;
 
 protected slots:
-  void update_value(int);
+  //void update_value(int);
 };
 }  // end of namespace component
 
@@ -748,7 +748,7 @@ public:
   void update(int frame) override;
 
 protected slots:
-  void update_value(QString const &);
+  //void update_value(QString const &);
 };
 }  // end of namespace component
 

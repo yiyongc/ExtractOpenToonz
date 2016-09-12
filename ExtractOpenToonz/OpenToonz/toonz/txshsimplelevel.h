@@ -348,7 +348,7 @@ the existence of said hook file).
 
 public Q_SLOTS:
 
-  void onPaletteChanged();  //!< Invoked when some colorstyle has been changed
+  //void onPaletteChanged();  //!< Invoked when some colorstyle has been changed
 
 private:
   typedef boost::container::flat_set<TFrameId> FramesSet;

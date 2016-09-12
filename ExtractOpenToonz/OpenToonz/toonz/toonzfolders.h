@@ -21,7 +21,7 @@ namespace ToonzFolder {
 
 TFilePath getModulesDir();
 TFilePath getTemplateModuleDir();
-TFilePath getMyModuleDir();
+//TFilePath getMyModuleDir();
 
 TFilePath getRoomsDir();
 TFilePath getTemplateRoomsDir();

@@ -178,9 +178,9 @@ public:
   bool isEnabled() { return m_enabled; }
 
 public slots:
-  void setEnable(bool enabled);
-  void updateSize(const QSize &size);
-  void setBgPainter(TPixel32 color1, TPixel32 color2 = TPixel32());
+  //void setEnable(bool enabled);
+  //void updateSize(const QSize &size);
+  //void setBgPainter(TPixel32 color1, TPixel32 color2 = TPixel32());
 
 protected:
   void computeContent();

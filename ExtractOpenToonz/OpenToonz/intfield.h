@@ -201,18 +201,18 @@ protected slots:
   /*! Set to value the text field. If text field value is different from \b
      value
                   emit signal valueChanged(). */
-  void onSliderChanged(int value);
-  void onSliderReleased() { emit valueChanged(false); }
+  //void onSliderChanged(int value);
+  //void onSliderReleased() { emit valueChanged(false); }
 
   /*! Set slider and roller value to current value in text field.
   \n	This protected slot is called when text editing is finished.
   \n	If slider value is different from text field value emit signal
   valueChanged(). */
-  void onEditingFinished();
+ // void onEditingFinished();
   /*! Set text field and slider to roller current value.
   \n	If slider and text field value are different from roller value
                   emit signal valueChanged(). */
-  void onRollerValueChanged(bool isDragging);
+ // void onRollerValueChanged(bool isDragging);
 
 signals:
   /*! This is a signal emitted when IntField, slider or text field, value

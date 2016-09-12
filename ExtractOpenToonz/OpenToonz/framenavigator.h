@@ -60,7 +60,7 @@ public:
   FrameNavigator(QWidget *parent = 0);
   ~FrameNavigator() {}
 
-  int getFrame() const { return m_frame; }
+  //int getFrame() const { return m_frame; }
 
   void setFrameHandle(TFrameHandle *);  //!< Attaches the navigator to the
                                         //! specified frameHandle.

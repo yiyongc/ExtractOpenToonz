@@ -432,7 +432,7 @@ private:
 //-------------------------------------------------------------------
 
 #ifdef _WIN32
-template class DVAPI TSmartPointerT<TPalette>;
+template class TSmartPointerT<TPalette>;
 #endif
 
 //-------------------------------------------------------------------

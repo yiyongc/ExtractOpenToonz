@@ -272,13 +272,13 @@ Dialog::Dialog(QWidget *parent, bool hasButton, bool hasFixedSize,
   setWindowFlags(Qt::Tool);
 #endif
 
-  if (!m_settings) {
-    TFilePath layoutDir = ToonzFolder::getMyModuleDir();
-    TFilePath savePath  = layoutDir + TFilePath("popups.ini");
-    m_settings =
-        new QSettings(QString::fromStdWString(savePath.getWideString()),
-                      QSettings::IniFormat);
-  }
+  //if (!m_settings) {
+  //  //TFilePath layoutDir = ToonzFolder::getMyModuleDir();
+  //  //TFilePath savePath  = layoutDir + TFilePath("popups.ini");
+  //  m_settings =
+  //      new QSettings(QString::fromStdWString(savePath.getWideString()),
+  //                    QSettings::IniFormat);
+  //}
 
   if (name == QString()) return;
   m_name      = name + "DialogGeometry";
@@ -309,12 +309,12 @@ void Dialog::moveEvent(QMoveEvent *e) {
 //---------------------------------------------------------------------------------
 
 void Dialog::resizeEvent(QResizeEvent *e) {
-  if (Preferences::instance()->getCurrentLanguage() != "English") {
+  /*if (Preferences::instance()->getCurrentLanguage() != "English") {
     QSize t = this->size();
     QLabel *s;
     foreach (s, m_labelList)
       s->setFixedWidth(t.width() * .35);
-  }
+  }*/
 
   if (m_name == QString()) return;
 

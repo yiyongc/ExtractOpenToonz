@@ -76,10 +76,10 @@ public:
   ParamsPage(QWidget *parent = 0, ParamViewer *paramViewer = 0);
   ~ParamsPage();
 
-  void setPage(TIStream &is, const TFxP &fx) {
-    setPageField(is, fx);
-    setPageSpace();
-  }
+  //void setPage(TIStream &is, const TFxP &fx) {
+  //  setPageField(is, fx);
+  //  setPageSpace();
+  //}
 
   void setFx(const TFxP &currentFx, const TFxP &actualFx, int frame);
 
@@ -178,9 +178,9 @@ protected:
   void createPage(TIStream &is, const TFxP &fx, int index);
 
 protected slots:
-  void setPage(int);
-  void openHelpFile();
-  void openHelpUrl();
+  //void setPage(int);
+  //void openHelpFile();
+  //void openHelpUrl();
 };
 
 //=============================================================================
@@ -278,10 +278,10 @@ public:
   TObjectHandle *getObjectHandle() const { return m_objectHandle; }
 
 public slots:
-  void setCurrentFrame();
-  void setCurrentFx();
-  void setCurrentScene();
-  void notifySceneChanged();
+  //void setCurrentFrame();
+  //void setCurrentFx();
+  //void setCurrentScene();
+  //void notifySceneChanged();
 
 protected:
   /*! \b currentFx is fx with parent, \b actualFx is simple fx. */
@@ -295,17 +295,17 @@ protected:
   void changeTitleBar(TFx *fx);
 
 protected slots:
-  void updateViewer();
-  void updateParamViewer();
-  void onPointChanged(int index, const TPointD &p);
-  void onViewModeChanged(QAction *);
+  //void updateViewer();
+  //void updateParamViewer();
+  //void onPointChanged(int index, const TPointD &p);
+  //void onViewModeChanged(QAction *);
 
-  void setWhiteBg();
-  void setBlackBg();
-  void setCheckboardBg();
+  //void setWhiteBg();
+  //void setBlackBg();
+  //void setCheckboardBg();
 
-  void onPreferedSizeChanged(QSize);
-  void onShowSwatchButtonToggled(bool);
+  //void onPreferedSizeChanged(QSize);
+  //void onShowSwatchButtonToggled(bool);
 };
 
 #endif  // FXSETTINGS_H

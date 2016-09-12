@@ -468,15 +468,15 @@ inline TPixel64 premultiply(const TPixel64 &pix)
 //				   double *h, double *l, double *s);
 
 TPixel32 toPixel32(const TPixel64 &);
-//TPixel32 toPixel32(const TPixelD &);
+TPixel32 toPixel32(const TPixelD &);
 //TPixel32 toPixel32(const TPixelGR8 &);
 //
 TPixel64 toPixel64(const TPixel32 &);
-//TPixel64 toPixel64(const TPixelD &);
+TPixel64 toPixel64(const TPixelD &);
 //TPixel64 toPixel64(const TPixelGR8 &);
 //
-//TPixelD toPixelD(const TPixel32 &);
-//TPixelD toPixelD(const TPixel64 &);
+TPixelD toPixelD(const TPixel32 &);
+TPixelD toPixelD(const TPixel64 &);
 //TPixelD toPixelD(const TPixelGR8 &);
 
 //

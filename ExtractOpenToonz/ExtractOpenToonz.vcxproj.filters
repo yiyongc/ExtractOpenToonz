@@ -278,6 +278,54 @@
     <ClCompile Include="GeneratedFiles\Release\moc_preferences.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="OpenToonz\framenavigator.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tframehandle.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_tframehandle.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tfx.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tfilepath.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tnotanimatableparam.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\fxhistogramrender.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_histogram.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_histogram.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tpointparam.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tpixelparam.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\trangeparam.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tspectrumparam.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tstream.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tfilepath_io.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tdoubleparam.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="extractopentoonz.h">
@@ -357,6 +405,12 @@
     </CustomBuild>
     <CustomBuild Include="OpenToonz\toonz\preferences.h">
       <Filter>OpenToonz\toonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\tframehandle.h">
+      <Filter>OpenToonz</Filter>
+    </CustomBuild>
+    <CustomBuild Include="OpenToonz\histogram.h">
+      <Filter>OpenToonz</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -776,6 +830,42 @@
     </ClInclude>
     <ClInclude Include="OpenToonz\toonz\toonzfolders.h">
       <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tconst.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tstream.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tparamcontainer.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tfxattributes.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\texternfx.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tbasefx.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tzeraryfx.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tpassivecachemanager.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tfxcachemanager.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\trenderresourcemanager.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tcacheresource.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tfilepath_io.h">
+      <Filter>OpenToonz</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
