@@ -284,22 +284,22 @@ public:
 
 public slots:
 
-  void swapEdge_mesh_undo();
-  void collapseEdge_mesh_undo();
-  void splitEdge_mesh_undo();
-  void cutEdges_mesh_undo();
+  //void swapEdge_mesh_undo();
+  //void collapseEdge_mesh_undo();
+  //void splitEdge_mesh_undo();
+  //void cutEdges_mesh_undo();
 
-  void deleteSelectedVertex_undo();
+  //void deleteSelectedVertex_undo();
 
-  void setKey_undo();
-  void setGlobalKey_undo();
-  void setRestKey_undo();
-  void setGlobalRestKey_undo();
+  //void setKey_undo();
+  //void setGlobalKey_undo();
+  //void setRestKey_undo();
+  //void setGlobalRestKey_undo();
 
-  void copySkeleton();
-  void pasteSkeleton_undo();
-  void copyDeformation();
-  void pasteDeformation_undo();
+  //void copySkeleton();
+  //void pasteSkeleton_undo();
+  //void copyDeformation();
+  //void pasteDeformation_undo();
 
 signals:  // privates
 
@@ -383,14 +383,14 @@ private:
 
 private slots:
 
-  void onFrameSwitched() override;
-  void onColumnSwitched();
-  void onXsheetChanged();
+  //void onFrameSwitched() override;
+  //void onColumnSwitched();
+  //void onXsheetChanged();
 
-  void onShowMeshToggled(bool on);
-  void onShowSOToggled(bool on);
-  void onShowRigidityToggled(bool on);
-  void onShowSkelOSToggled(bool on);
+  //void onShowMeshToggled(bool on);
+  //void onShowSOToggled(bool on);
+  //void onShowRigidityToggled(bool on);
+  //void onShowSkelOSToggled(bool on);
 };
 
 //****************************************************************************************
@@ -423,12 +423,12 @@ private:
 
 private slots:
 
-  void onSkelIdsListChanged();
-  void onSkelIdChanged();
-  void onSkelIdEdited();
+  //void onSkelIdsListChanged();
+  //void onSkelIdChanged();
+  //void onSkelIdEdited();
 
-  void onAddSkeleton();
-  void onRemoveSkeleton();
+  //void onAddSkeleton();
+  //void onRemoveSkeleton();
 };
 
 //****************************************************************************************

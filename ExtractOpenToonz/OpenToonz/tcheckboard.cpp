@@ -89,7 +89,7 @@ void TRop::checkBoard(TRasterP rout, const TPixel32 &pix1, const TPixel32 &pix2,
     if (rout64)
       do_checkBoard<TPixel64>(rout64, toPixel64(pix1), toPixel64(pix2), dim,
                               offset);
-    else
-      throw TRopException("unsupported pixel type");
+   /* else
+      throw TRopException("unsupported pixel type");*/
   }
 }

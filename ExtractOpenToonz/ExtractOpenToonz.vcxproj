@@ -246,6 +246,8 @@
     <ClCompile Include="OpenToonz\framenavigator.cpp" />
     <ClCompile Include="OpenToonz\fxhistogramrender.cpp" />
     <ClCompile Include="OpenToonz\gutil.cpp" />
+    <ClCompile Include="OpenToonz\intfield.cpp" />
+    <ClCompile Include="OpenToonz\lineedit.cpp" />
     <ClCompile Include="OpenToonz\menubarcommand.cpp" />
     <ClCompile Include="OpenToonz\meshbuilder.cpp" />
     <ClCompile Include="OpenToonz\MeshOptionDialog.cpp" />
@@ -257,6 +259,7 @@
     <ClCompile Include="OpenToonz\texception.cpp" />
     <ClCompile Include="OpenToonz\tfilepath.cpp" />
     <ClCompile Include="OpenToonz\tfilepath_io.cpp" />
+    <ClCompile Include="OpenToonz\tframehandle.cpp" />
     <ClCompile Include="OpenToonz\tfx.cpp" />
     <ClCompile Include="OpenToonz\tgeometry.cpp" />
     <ClCompile Include="OpenToonz\timage.cpp" />
@@ -264,12 +267,14 @@
     <ClCompile Include="OpenToonz\tnotanimatableparam.cpp" />
     <ClCompile Include="OpenToonz\toperators.cpp" />
     <ClCompile Include="OpenToonz\tparam.cpp" />
+    <ClCompile Include="OpenToonz\tparamset.cpp" />
     <ClCompile Include="OpenToonz\tpixel.cpp" />
     <ClCompile Include="OpenToonz\tpixelparam.cpp" />
     <ClCompile Include="OpenToonz\tpixelutils.cpp" />
     <ClCompile Include="OpenToonz\tpointparam.cpp" />
     <ClCompile Include="OpenToonz\trangeparam.cpp" />
     <ClCompile Include="OpenToonz\traster.cpp" />
+    <ClCompile Include="OpenToonz\trasterimage.cpp" />
     <ClCompile Include="OpenToonz\trop_borders.cpp" />
     <ClCompile Include="OpenToonz\tsmartpointer.cpp" />
     <ClCompile Include="OpenToonz\tspectrumparam.cpp" />

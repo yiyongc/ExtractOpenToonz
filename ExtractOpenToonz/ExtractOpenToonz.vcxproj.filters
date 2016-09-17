@@ -326,6 +326,21 @@
     <ClCompile Include="OpenToonz\tdoubleparam.cpp">
       <Filter>OpenToonz</Filter>
     </ClCompile>
+    <ClCompile Include="OpenToonz\lineedit.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tframehandle.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\intfield.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\trasterimage.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tparamset.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="extractopentoonz.h">

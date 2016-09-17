@@ -113,8 +113,8 @@ public:
   void getKeyframes(std::set<double> &frames) const override;
   double keyframeIndexToFrame(int index) const override;
 
-  const TDoubleKeyframe &getKeyframe(int index) const;
-  const TDoubleKeyframe &getKeyframeAt(double frame) const;
+  //const TDoubleKeyframe &getKeyframe(int index) const;
+  //const TDoubleKeyframe &getKeyframeAt(double frame) const;
 
   //! assign k to the kIndex-th keyframe; postcondition: m_frame order is
   //! maintained

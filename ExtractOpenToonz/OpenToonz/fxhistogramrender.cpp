@@ -23,11 +23,11 @@
 // FxHistogramRenderPort
 //*******************************************************************************************************
 
-FxHistogramRenderPort::FxHistogramRenderPort() {}
+//FxHistogramRenderPort::FxHistogramRenderPort() {}
 
 //------------------------------------------------------------------------------------------------------
 
-FxHistogramRenderPort::~FxHistogramRenderPort() {}
+//FxHistogramRenderPort::~FxHistogramRenderPort() {}
 
 //------------------------------------------------------------------------------------------------------
 
@@ -64,7 +64,7 @@ FxHistogramRender::FxHistogramRender()
 //-----------------------------------------------------------------------------
 
 FxHistogramRender::~FxHistogramRender() {
-  if (m_renderPort) delete m_renderPort;
+  //if (m_renderPort) delete m_renderPort;
 }
 
 //-----------------------------------------------------------------------------
@@ -197,7 +197,7 @@ void FxHistogramRender::onRenderCompleted(const TRasterP &raster,
   TRasterImageP img(raster);
   std::string id = std::to_string(m_lastFrameInfo.m_fx->getIdentifier()) +
                    ".noext" + std::to_string(m_lastFrameInfo.m_frame);
-  TImageCache::instance()->add(id, img, true);
+  //TImageCache::instance()->add(id, img, true);
 
   //m_histograms->setRaster(raster);
 }

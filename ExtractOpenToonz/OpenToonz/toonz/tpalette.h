@@ -82,7 +82,7 @@ ASAP.
 \sa The TColorStyle class.
 */
 
-class DVAPI TPalette final : public TPersist, public TSmartObject {
+class TPalette final : public TPersist, public TSmartObject {
   DECLARE_CLASS_CODE
   PERSIST_DECLARATION(TPalette);
 
@@ -91,7 +91,7 @@ public:
           \brief A palette page is a restricted view of a palette instance.
   */
 
-  class DVAPI Page {
+  class Page {
     friend class TPalette;
 
   private:
@@ -246,6 +246,7 @@ public:
   //    const;  //!< Returns a pointer to the color style with the specified id,
               //!  or \p 0 if said id is not stored in the palette.
   int getStyleCount() const {
+	  return 0;
    // return (int)m_styles.size();
   }  //!< Returns the number of the color styles in the palette.
   int getStyleInPagesCount()

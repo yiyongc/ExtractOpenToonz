@@ -161,13 +161,13 @@ public:
                        //!< an internal string description of the fx.
 public:
   TFxImp(TFx *fx)
-      : m_fx(fx), m_activeTimeRegion(TFxTimeRegion::createUnlimited()), m_id() {
-    m_prev = m_next = this;
+	  /*: m_fx(fx), m_activeTimeRegion(TFxTimeRegion::createUnlimited()), m_id()*/ {
+    //m_prev = m_next = this;
   }
 
   ~TFxImp() {
-    m_prev->m_next = m_next;
-    m_next->m_prev = m_prev;
+    //m_prev->m_next = m_next;
+    //m_next->m_prev = m_prev;
   }
 
   bool checkLinks() const {
@@ -263,7 +263,7 @@ DEFINE_CLASS_CODE(TFx, 3)
 
 TFx::TFx()
     : TSmartObject(m_classCode)  // TPersist(TFxImp::m_instances)
-    , m_imp(new TFxImp(this)) {}
+    /*, m_imp(new TFxImp(this))*/ {}
 
 //--------------------------------------------------
 
@@ -274,7 +274,7 @@ TFx::~TFx() {
     port->setFx(0);
   }
 
-  delete m_imp;
+ /* delete m_imp;*/
 }
 
 //--------------------------------------------------
@@ -310,46 +310,46 @@ TParamContainer *TFx::getParams() { return &m_imp->m_paramContainer; }
 //--------------------------------------------------
 
 TFx *TFx::clone(bool recursive) const {
-  TFx *fx = TFx::create(getFxType());
-  assert(fx);
-  return this->clone(fx, recursive);
+	TFx *fx = 0;/*= TFx::create(getFxType())*/;
+  //assert(fx);
+  return fx/*this->clone(fx, recursive)*/;
 }
 
 TFx *TFx::clone(TFx *fx, bool recursive) const {
   // Copy misc stuff
 
-  fx->m_imp->m_activeTimeRegion = m_imp->m_activeTimeRegion;
-  fx->setIdentifier(getIdentifier());
-  fx->getParams()->copy(getParams());
-  fx->setFxId(getFxId());
-  fx->setName(getName());
+  //fx->m_imp->m_activeTimeRegion = m_imp->m_activeTimeRegion;
+  //fx->setIdentifier(getIdentifier());
+  //fx->getParams()->copy(getParams());
+  //fx->setFxId(getFxId());
+  //fx->setName(getName());
 
-  // Copy attributes
-  *fx->getAttributes() = *getAttributes();
+  //// Copy attributes
+  //*fx->getAttributes() = *getAttributes();
 
-  // Clone the dynamic ports pool
-  if (hasDynamicPortGroups()) {
-    int p, pCount = m_imp->m_portArray.size();
-    for (p = 0; p != pCount; ++p) {
-      const NamePort &namedPort = m_imp->m_portArray[p];
+  //// Clone the dynamic ports pool
+  //if (hasDynamicPortGroups()) {
+  //  int p, pCount = m_imp->m_portArray.size();
+  //  for (p = 0; p != pCount; ++p) {
+  //    const NamePort &namedPort = m_imp->m_portArray[p];
 
-      int groupIdx = namedPort.second->getGroupIndex();
-      if (groupIdx >= 0 && !fx->getInputPort(namedPort.first))
-        fx->addInputPort(namedPort.first, new TRasterFxPort, groupIdx);
-    }
+  //    int groupIdx = namedPort.second->getGroupIndex();
+  //    if (groupIdx >= 0 && !fx->getInputPort(namedPort.first))
+  //      fx->addInputPort(namedPort.first, new TRasterFxPort, groupIdx);
+  //  }
 
-    assert(pCount == fx->getInputPortCount());
-  }
+  //  assert(pCount == fx->getInputPortCount());
+  //}
 
-  // copia ricorsiva sulle porte
-  if (recursive) {
-    int p, pCount = getInputPortCount();
-    for (p = 0; p != pCount; ++p) {
-      TFxPort *port = getInputPort(p);
-      if (port->getFx())
-        fx->connect(getInputPortName(p), port->getFx()->clone(true));
-    }
-  }
+  //// copia ricorsiva sulle porte
+  //if (recursive) {
+  //  int p, pCount = getInputPortCount();
+  //  for (p = 0; p != pCount; ++p) {
+  //    TFxPort *port = getInputPort(p);
+  //    if (port->getFx())
+  //      fx->connect(getInputPortName(p), port->getFx()->clone(true));
+  //  }
+  //}
 
   return fx;
 }
@@ -357,47 +357,47 @@ TFx *TFx::clone(TFx *fx, bool recursive) const {
 //--------------------------------------------------
 
 void TFx::linkParams(TFx *fx) {
-  if (this == fx) return;
-  getParams()->link(fx->getParams());
-  m_imp->m_activeTimeRegion = fx->m_imp->m_activeTimeRegion;
+  //if (this == fx) return;
+  //getParams()->link(fx->getParams());
+  //m_imp->m_activeTimeRegion = fx->m_imp->m_activeTimeRegion;
 
-  // aggiorno i link
-  assert(m_imp->checkLinks());
-  assert(fx->m_imp->checkLinks());
+  //// aggiorno i link
+  //assert(m_imp->checkLinks());
+  //assert(fx->m_imp->checkLinks());
 
-  tswap(m_imp->m_next, fx->m_imp->m_next);
-  tswap(m_imp->m_next->m_prev, fx->m_imp->m_next->m_prev);
+  //tswap(m_imp->m_next, fx->m_imp->m_next);
+  //tswap(m_imp->m_next->m_prev, fx->m_imp->m_next->m_prev);
 
-  assert(m_imp->checkLinks());
-  assert(fx->m_imp->checkLinks());
+  //assert(m_imp->checkLinks());
+  //assert(fx->m_imp->checkLinks());
 }
 
 //--------------------------------------------------
 
 void TFx::unlinkParams() {
-  // clone dei parametri
-  getParams()->unlink();
+  //// clone dei parametri
+  //getParams()->unlink();
 
-  assert(m_imp->m_prev);
-  assert(m_imp->m_next);
-  assert(m_imp->m_prev->m_next == m_imp);
-  assert(m_imp->m_next->m_prev == m_imp);
-  m_imp->m_prev->m_next = m_imp->m_next;
-  m_imp->m_next->m_prev = m_imp->m_prev;
-  m_imp->m_next = m_imp->m_prev = m_imp;
+  //assert(m_imp->m_prev);
+  //assert(m_imp->m_next);
+  //assert(m_imp->m_prev->m_next == m_imp);
+  //assert(m_imp->m_next->m_prev == m_imp);
+  //m_imp->m_prev->m_next = m_imp->m_next;
+  //m_imp->m_next->m_prev = m_imp->m_prev;
+  //m_imp->m_next = m_imp->m_prev = m_imp;
 
-  notify(TFxParamsUnlinked(this));
+  //notify(TFxParamsUnlinked(this));
 }
 
 //--------------------------------------------------
 
 bool TFx::addInputPort(const std::string &name, TFxPort &port) {
-  PortTable::iterator it = m_imp->m_portTable.find(name);
-  if (it != m_imp->m_portTable.end()) return false;
+  //PortTable::iterator it = m_imp->m_portTable.find(name);
+  //if (it != m_imp->m_portTable.end()) return false;
 
-  m_imp->m_portTable[name] = &port;
-  m_imp->m_portArray.push_back(NamePort(name, &port));
-  port.setOwnerFx(this);  // back pointer to the owner...
+  //m_imp->m_portTable[name] = &port;
+  //m_imp->m_portArray.push_back(NamePort(name, &port));
+  //port.setOwnerFx(this);  // back pointer to the owner...
 
   return true;
 }
@@ -700,133 +700,133 @@ void TFx::setNewIdentifier() { m_imp->m_id = ++m_imp->m_nextId; }
 //--------------------------------------------------
 
 void TFx::loadData(TIStream &is) {
-  std::string tagName;
-  VersionNumber tnzVersion = is.getVersion();
+  //std::string tagName;
+  //VersionNumber tnzVersion = is.getVersion();
 
-  QList<int> groupIds;
-  QList<std::wstring> groupNames;
-  while (is.openChild(tagName)) {
-    if (tagName == "params") {
-      while (!is.eos()) {
-        std::string paramName;
-        while (is.openChild(paramName)) {
-          TParamP param = getParams()->getParam(paramName);
-          if (param)
-            param->loadData(is);
-          else  // il parametro non e' presente -> skip
-            skipChild(is);
+  //QList<int> groupIds;
+  //QList<std::wstring> groupNames;
+  //while (is.openChild(tagName)) {
+  //  if (tagName == "params") {
+  //    while (!is.eos()) {
+  //      std::string paramName;
+  //      while (is.openChild(paramName)) {
+  //        TParamP param = getParams()->getParam(paramName);
+  //        if (param)
+  //          param->loadData(is);
+  //        else  // il parametro non e' presente -> skip
+  //          skipChild(is);
 
-          is.closeChild();
-        }
-      }
-    } else if (tagName == "paramsLinkedTo") {
-      TPersist *p = 0;
-      is >> p;
-      TFx *fx = dynamic_cast<TFx *>(p);
-      if (fx == 0) throw TException("Missing linkedSetRoot");
-      linkParams(fx);
-    } else if (tagName == "ports") {
-      std::string portName;
-      while (!is.eos()) {
-        while (is.openChild(portName)) {
-          VersionNumber version = is.getVersion();
-          compatibilityTranslatePort(version.first, version.second, portName);
+  //        is.closeChild();
+  //      }
+  //    }
+  //  } else if (tagName == "paramsLinkedTo") {
+  //    TPersist *p = 0;
+  //    is >> p;
+  //    TFx *fx = dynamic_cast<TFx *>(p);
+  //    if (fx == 0) throw TException("Missing linkedSetRoot");
+  //    linkParams(fx);
+  //  } else if (tagName == "ports") {
+  //    std::string portName;
+  //    while (!is.eos()) {
+  //      while (is.openChild(portName)) {
+  //        VersionNumber version = is.getVersion();
+  //        compatibilityTranslatePort(version.first, version.second, portName);
 
-          // Try to find the specified port
-          TFxPort *port = getInputPort(portName);
-          if (!port) {
-            // Scan dynamic port groups for a containing one - add a port there
-            // if found
-            int g, gCount = dynamicPortGroupsCount();
-            for (g = 0; g != gCount; ++g) {
-              TFxPortDG *group = const_cast<TFxPortDG *>(dynamicPortGroup(g));
+  //        // Try to find the specified port
+  //        TFxPort *port = getInputPort(portName);
+  //        if (!port) {
+  //          // Scan dynamic port groups for a containing one - add a port there
+  //          // if found
+  //          int g, gCount = dynamicPortGroupsCount();
+  //          for (g = 0; g != gCount; ++g) {
+  //            TFxPortDG *group = const_cast<TFxPortDG *>(dynamicPortGroup(g));
 
-              if (group->contains(portName)) {
-                addInputPort(portName, port = new TRasterFxPort, g);
-                break;
-              }
-            }
-          }
+  //            if (group->contains(portName)) {
+  //              addInputPort(portName, port = new TRasterFxPort, g);
+  //              break;
+  //            }
+  //          }
+  //        }
 
-          // Could not find (or add) a port with the corresponding name - throw
-          if (!port)
-            throw TException(std::string("port '") + portName +
-                             "' is not present");
+  //        // Could not find (or add) a port with the corresponding name - throw
+  //        if (!port)
+  //          throw TException(std::string("port '") + portName +
+  //                           "' is not present");
 
-          if (!is.eos()) {
-            TPersist *p = 0;
-            is >> p;
-            TFx *fx = dynamic_cast<TFx *>(p);
-            port->setFx(fx);
-          }
+  //        if (!is.eos()) {
+  //          TPersist *p = 0;
+  //          is >> p;
+  //          TFx *fx = dynamic_cast<TFx *>(p);
+  //          port->setFx(fx);
+  //        }
 
-          is.closeChild();
-        }
-      }
-    } else if (tagName == "dagNodePos") {
-      TPointD p;
-      is >> p.x >> p.y;
-      m_imp->m_attributes.setDagNodePos(updateDagPosition(p, tnzVersion));
-    } else if (tagName == "numberId") {
-      int numberId = 0;
-      is >> numberId;
-      m_imp->m_attributes.setId(numberId);
-    } else if (tagName == "passiveCacheId") {
-      int passiveCacheId = 0;
-      is >> passiveCacheId;
+  //        is.closeChild();
+  //      }
+  //    }
+  //  } else if (tagName == "dagNodePos") {
+  //    TPointD p;
+  //    is >> p.x >> p.y;
+  //    m_imp->m_attributes.setDagNodePos(updateDagPosition(p, tnzVersion));
+  //  } else if (tagName == "numberId") {
+  //    int numberId = 0;
+  //    is >> numberId;
+  //    m_imp->m_attributes.setId(numberId);
+  //  } else if (tagName == "passiveCacheId") {
+  //    int passiveCacheId = 0;
+  //    is >> passiveCacheId;
 
-      assert(passiveCacheId > 0);
-      TPassiveCacheManager::instance()->declareCached(this, passiveCacheId);
-    } else if (tagName == "name") {
-      // passo attraverso un filepath solo per evitare i problemi di blank
-      // o caratteri strani dentro il nome (sospetto che tfilepath sia gestito
-      // correttamente mentre wstring no
-      TFilePath tmp;
-      is >> tmp;
-      setName(tmp.getWideName());
-    } else if (tagName == "fxId") {
-      TFilePath tmp;
-      is >> tmp;
-      setFxId(tmp.getWideName());
-    } else if (tagName == "enabled") {
-      int flag = 1;
-      is >> flag;
-      m_imp->m_attributes.enable(flag != 0);
-    } else if (tagName == "opened") {
-      int opened = 1;
-      is >> opened;
-      m_imp->m_attributes.setIsOpened(opened);
-    } else if (tagName == "groupIds") {
-      int groupId;
-      while (!is.eos()) {
-        is >> groupId;
-        groupIds.append(groupId);
-      }
-    } else if (tagName == "groupNames") {
-      std::wstring groupName;
-      while (!is.eos()) {
-        is >> groupName;
-        groupNames.append(groupName);
-      }
-    } else {
-      throw TException("Unknown tag!");
-    }
-    is.closeChild();
-  }
-  if (!groupIds.isEmpty()) {
-    assert(groupIds.size() == groupNames.size());
-    int i;
-    for (i = 0; i < groupIds.size(); i++) {
-      m_imp->m_attributes.setGroupId(groupIds[i]);
-      m_imp->m_attributes.setGroupName(groupNames[i]);
-    }
-  }
+  //    assert(passiveCacheId > 0);
+  //    TPassiveCacheManager::instance()->declareCached(this, passiveCacheId);
+  //  } else if (tagName == "name") {
+  //    // passo attraverso un filepath solo per evitare i problemi di blank
+  //    // o caratteri strani dentro il nome (sospetto che tfilepath sia gestito
+  //    // correttamente mentre wstring no
+  //    TFilePath tmp;
+  //    is >> tmp;
+  //    setName(tmp.getWideName());
+  //  } else if (tagName == "fxId") {
+  //    TFilePath tmp;
+  //    is >> tmp;
+  //    setFxId(tmp.getWideName());
+  //  } else if (tagName == "enabled") {
+  //    int flag = 1;
+  //    is >> flag;
+  //    m_imp->m_attributes.enable(flag != 0);
+  //  } else if (tagName == "opened") {
+  //    int opened = 1;
+  //    is >> opened;
+  //    m_imp->m_attributes.setIsOpened(opened);
+  //  } else if (tagName == "groupIds") {
+  //    int groupId;
+  //    while (!is.eos()) {
+  //      is >> groupId;
+  //      groupIds.append(groupId);
+  //    }
+  //  } else if (tagName == "groupNames") {
+  //    std::wstring groupName;
+  //    while (!is.eos()) {
+  //      is >> groupName;
+  //      groupNames.append(groupName);
+  //    }
+  //  } else {
+  //    throw TException("Unknown tag!");
+  //  }
+  //  is.closeChild();
+  //}
+  //if (!groupIds.isEmpty()) {
+  //  assert(groupIds.size() == groupNames.size());
+  //  int i;
+  //  for (i = 0; i < groupIds.size(); i++) {
+  //    m_imp->m_attributes.setGroupId(groupIds[i]);
+  //    m_imp->m_attributes.setGroupName(groupNames[i]);
+  //  }
+  //}
 }
 
 //--------------------------------------------------
 
 void TFx::saveData(TOStream &os) {
-  TFx *linkedSetRoot = this;
+  /*TFx *linkedSetRoot = this;
   if (m_imp->m_next != m_imp) {
     TFxImp *imp = m_imp->m_next;
     int guard   = 0;
@@ -888,40 +888,40 @@ void TFx::saveData(TOStream &os) {
         m_imp->m_attributes.getGroupNameStack();
     for (i = 0; i < groupNameStack.size(); i++) os << groupNameStack[i];
     os.closeChild();
-  }
+  }*/
 }
 
 //--------------------------------------------------
 
 void TFx::loadPreset(TIStream &is) {
-  std::string tagName;
-  while (is.openChild(tagName)) {
-    if (tagName == "dvpreset") {
-      std::string fxId = is.getTagAttribute("fxId");
-      if (fxId != getFxType())
-        throw TException("Preset doesn't match the fx type");
-    } else if (tagName == "params") {
-      while (!is.eos()) {
-        std::string paramName;
-        while (is.openChild(paramName)) {
-          try {
-            TParamP param = getParams()->getParam(paramName);
-            param->loadData(is);
-          } catch (TException &) { /*skip*/
-          }                        // il parametro non e' presente
-          is.closeChild();
-        }
-      }
-    } else {
-      throw TException("Fx preset unknown tag!");
-    }
-  }
+  //std::string tagName;
+  //while (is.openChild(tagName)) {
+  //  if (tagName == "dvpreset") {
+  //    std::string fxId = is.getTagAttribute("fxId");
+  //    if (fxId != getFxType())
+  //      throw TException("Preset doesn't match the fx type");
+  //  } else if (tagName == "params") {
+  //    while (!is.eos()) {
+  //      std::string paramName;
+  //      while (is.openChild(paramName)) {
+  //        try {
+  //          TParamP param = getParams()->getParam(paramName);
+  //          param->loadData(is);
+  //        } catch (TException &) { /*skip*/
+  //        }                        // il parametro non e' presente
+  //        is.closeChild();
+  //      }
+  //    }
+  //  } else {
+  //    throw TException("Fx preset unknown tag!");
+  //  }
+  //}
 }
 
 //--------------------------------------------------
 
 void TFx::savePreset(TOStream &os) {
-  std::map<std::string, std::string> attributes;
+  /*std::map<std::string, std::string> attributes;
   attributes.insert(std::make_pair(std::string("ver"), std::string("1.0")));
   attributes.insert(std::make_pair(std::string("fxId"), getFxType()));
 
@@ -937,7 +937,7 @@ void TFx::savePreset(TOStream &os) {
   }
   os.closeChild();
 
-  os.closeChild();
+  os.closeChild();*/
 }
 
 //--------------------------------------------------
@@ -950,7 +950,8 @@ void TFx::disconnectAll() {
 //--------------------------------------------------
 
 TFx *TFx::create(std::string name) {
-  return TFxFactory::instance()->create(name);
+	TFx* yy = 0;
+	return yy;//TFxFactory::instance()->create(name);
 }
 
 //--------------------------------------------------

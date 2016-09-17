@@ -100,7 +100,7 @@ void CommandManager::setShortcut(CommandId id, QAction *action,
     action->setShortcut(QKeySequence(QString::fromStdString(shortcutString)));
   else
     action->setShortcut(QKeySequence());
-  TFilePath fp = ToonzFolder::getMyModuleDir() + TFilePath("shortcuts.ini");
+  TFilePath fp = /*ToonzFolder::getMyModuleDir() +*/ TFilePath("shortcuts.ini");
   QSettings settings(toQString(fp), QSettings::IniFormat);
   settings.beginGroup("shortcuts");
   settings.setValue(QString(id), QString::fromStdString(shortcutString));
@@ -131,7 +131,7 @@ void CommandManager::define(CommandId id, CommandType type,
   m_qactionTable[qaction] = node;
   qaction->setShortcutContext(Qt::ApplicationShortcut);
 
-  TFilePath fp = ToonzFolder::getModuleFile("shortcuts.ini");
+  TFilePath fp(""); //ToonzFolder::getModuleFile("shortcuts.ini");
   QSettings settings(toQString(fp), QSettings::IniFormat);
   settings.beginGroup("shortcuts");
   QString defaultShortcutQString =
@@ -295,9 +295,9 @@ void CommandManager::setShortcut(QAction *action, std::string shortcutString) {
   assert(ks.count() == 1 || ks.count() == 0 && shortcut == "");
 
   if (node->m_type == ZoomCommandType && ks.count() > 1) {
-    DVGui::warning(
+   /* DVGui::warning(
         QObject::tr("It is not possible to assing a shortcut with modifiers to "
-                    "the visualization commands."));
+                    "the visualization commands."));*/
     return;
   }
   // lo shortcut e' gia' assegnato?
@@ -323,7 +323,7 @@ void CommandManager::setShortcut(QAction *action, std::string shortcutString) {
   m_shortcutTable[shortcutString] = node;
 
   // registro il tutto
-  TFilePath fp = ToonzFolder::getMyModuleDir() + TFilePath("shortcuts.ini");
+  TFilePath fp = /*ToonzFolder::getMyModuleDir() +*/ TFilePath("shortcuts.ini");
   QSettings settings(toQString(fp), QSettings::IniFormat);
   settings.beginGroup("shortcuts");
   settings.setValue(QString::fromStdString(node->m_id),

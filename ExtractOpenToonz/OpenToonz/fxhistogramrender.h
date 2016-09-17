@@ -74,7 +74,7 @@ private:
   };
 
   FxHistogramRenderPort *m_renderPort;
-  TRenderer m_renderer;
+  //TRenderer m_renderer;
   FrameInfo m_lastFrameInfo;
   TThread::Mutex m_mutex;
   QList<UINT> m_abortedRendering;

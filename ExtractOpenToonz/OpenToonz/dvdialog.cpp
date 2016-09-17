@@ -1156,15 +1156,15 @@ QString DVGui::getText(const QString &title, const QString &labelText,
 
 namespace {
 bool isStyleIdInPalette(int styleId, const TPalette *palette) {
-  if (palette->getStyleCount() == 0) return false;
-  int i;
-  for (i = 0; i < palette->getPageCount(); i++) {
-    const TPalette::Page *page = palette->getPage(i);
-    if (!page) return false;  // La pagina dovrebbe esserci sempre
-    int j;
-    for (j = 0; j < page->getStyleCount(); j++)
-      if (page->getStyleId(j) == styleId) return true;
-  }
+ // if (palette->getStyleCount() == 0) return false;
+//  int i;
+ // for (i = 0; i < palette->getPageCount(); i++) {
+   // const TPalette::Page *page = palette->getPage(i);
+   // if (!page) return false;  // La pagina dovrebbe esserci sempre
+  //  int j;
+   // for (j = 0; j < page->getStyleCount(); j++)
+   //   if (page->getStyleId(j) == styleId) return true;
+ // }
   return false;
 }
 }
@@ -1174,50 +1174,52 @@ bool isStyleIdInPalette(int styleId, const TPalette *palette) {
 int DVGui::eraseStylesInDemand(TPalette *palette,
                                const TXsheetHandle *xsheetHandle,
                                TPalette *newPalette) {
-  // Verifico se gli stili della paletta sono usati : eraseStylesInDemand()
-  std::vector<int> styleIds;
-  int h;
-  for (h = 0; h < palette->getPageCount(); h++) {
-    TPalette::Page *page = palette->getPage(h);
-    if (!page) continue;  // La pagina dovrebbe esserci sempre
-    int k;
-    for (k = 0; k < page->getStyleCount(); k++) {
-      int styleId = page->getStyleId(k);
-      bool isStyleIdInNewPalette =
-          (!newPalette) ? false : isStyleIdInPalette(styleId, newPalette);
-      if (styleId > 0 && !isStyleIdInNewPalette) styleIds.push_back(styleId);
-    }
-  }
+  //// Verifico se gli stili della paletta sono usati : eraseStylesInDemand()
+  //std::vector<int> styleIds;
+  //int h;
+  //for (h = 0; h < palette->getPageCount(); h++) {
+  //  TPalette::Page *page = palette->getPage(h);
+  //  if (!page) continue;  // La pagina dovrebbe esserci sempre
+  //  int k;
+  //  for (k = 0; k < page->getStyleCount(); k++) {
+  //    int styleId = page->getStyleId(k);
+  //    bool isStyleIdInNewPalette =
+  //        (!newPalette) ? false : isStyleIdInPalette(styleId, newPalette);
+  //    if (styleId > 0 && !isStyleIdInNewPalette) styleIds.push_back(styleId);
+  //  }
+  //}
 
-  return eraseStylesInDemand(palette, styleIds, xsheetHandle);
+  //return eraseStylesInDemand(palette, styleIds, xsheetHandle);
+
+	return 0;
 }
 
 //-----------------------------------------------------------------------------
 
 int DVGui::eraseStylesInDemand(TPalette *palette, std::vector<int> styleIds,
                                const TXsheetHandle *xsheetHandle) {
-  struct locals {
-    static bool isRasterLevel(const TXshSimpleLevel *level) {
-      return level->getType() == TZP_XSHLEVEL ||
-             level->getType() == OVL_XSHLEVEL;
-    }
-  };  // locals
+  //struct locals {
+  //  static bool isRasterLevel(const TXshSimpleLevel *level) {
+  //    return level->getType() == TZP_XSHLEVEL ||
+  //           level->getType() == OVL_XSHLEVEL;
+  //  }
+  //};  // locals
 
-  // Search xsheet levels attached to the palette
-  std::set<TXshSimpleLevel *> levels;
-  int row, column;
-  findPaletteLevels(levels, row, column, palette, xsheetHandle->getXsheet());
+  //// Search xsheet levels attached to the palette
+  //std::set<TXshSimpleLevel *> levels;
+  //int row, column;
+  //findPaletteLevels(levels, row, column, palette, xsheetHandle->getXsheet());
 
-  bool someStyleIsUsed =
-      !levels.empty() ||
-      styleIds.empty();  // I guess this is wrong... but I'm not touching it
-  if (someStyleIsUsed) someStyleIsUsed = areStylesUsed(levels, styleIds);
+  //bool someStyleIsUsed =
+  //    !levels.empty() ||
+  //    styleIds.empty();  // I guess this is wrong... but I'm not touching it
+  //if (someStyleIsUsed) someStyleIsUsed = areStylesUsed(levels, styleIds);
 
-  if (!someStyleIsUsed) return 1;
+  //if (!someStyleIsUsed) return 1;
 
-  // At least a style is selected and present in some level - ask user if and
-  // how styles
-  // should be deleted
+  //// At least a style is selected and present in some level - ask user if and
+  //// how styles
+  //// should be deleted
 
   QString question = QObject::tr(
                          "Styles you are going to delete are used to paint "
@@ -1227,25 +1229,25 @@ int DVGui::eraseStylesInDemand(TPalette *palette, std::vector<int> styleIds,
   int ret = DVGui::MsgBox(question, QObject::tr("Delete Styles Only"),
                           QObject::tr("Delete Styles, Lines and Areas"),
                           QObject::tr("Cancel"), 0);
-  if (ret != 2) return (ret == 0 || ret == 3) ? 0 : 1;
+  //if (ret != 2) return (ret == 0 || ret == 3) ? 0 : 1;
 
-  // Inform the user that case 2 will not produce an undo if a raster-based
-  // level is detected
-  if (boost::algorithm::any_of(levels, locals::isRasterLevel)) {
-    std::vector<QString> buttons(2);
-    buttons[0] = QObject::tr("Ok"), buttons[1] = QObject::tr("Cancel");
+  //// Inform the user that case 2 will not produce an undo if a raster-based
+  //// level is detected
+  //if (boost::algorithm::any_of(levels, locals::isRasterLevel)) {
+  //  std::vector<QString> buttons(2);
+  //  buttons[0] = QObject::tr("Ok"), buttons[1] = QObject::tr("Cancel");
 
-    if (DVGui::MsgBox(DVGui::WARNING,
-                      QObject::tr("Deletion of Lines and Areas from "
-                                  "raster-based levels is not undoable.\n"
-                                  "Are you sure?"),
-                      buttons) != 1)
-      return 0;
-  }
+  //  if (DVGui::MsgBox(DVGui::WARNING,
+  //                    QObject::tr("Deletion of Lines and Areas from "
+  //                                "raster-based levels is not undoable.\n"
+  //                                "Are you sure?"),
+  //                    buttons) != 1)
+  //    return 0;
+  //}
 
-  QApplication::setOverrideCursor(Qt::WaitCursor);
-  PaletteCmd::eraseStyles(levels, styleIds);
-  QApplication::restoreOverrideCursor();
+  //QApplication::setOverrideCursor(Qt::WaitCursor);
+  //PaletteCmd::eraseStyles(levels, styleIds);
+  //QApplication::restoreOverrideCursor();
 
   return (assert(ret == 2), ret);  // return 2 ?     :D
 }
