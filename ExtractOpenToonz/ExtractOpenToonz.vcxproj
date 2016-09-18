@@ -252,9 +252,16 @@
     <ClCompile Include="OpenToonz\meshbuilder.cpp" />
     <ClCompile Include="OpenToonz\MeshOptionDialog.cpp" />
     <ClCompile Include="OpenToonz\meshutils.cpp" />
+    <ClCompile Include="OpenToonz\plasticdeformer.cpp" />
+    <ClCompile Include="OpenToonz\plasticdeformerstorage.cpp" />
+    <ClCompile Include="OpenToonz\plastichandle.cpp" />
+    <ClCompile Include="OpenToonz\plasticskeleton.cpp" />
+    <ClCompile Include="OpenToonz\plasticskeletondeformation.cpp" />
+    <ClCompile Include="OpenToonz\plastictool_build.cpp" />
     <ClCompile Include="OpenToonz\tbigmemorymanager.cpp" />
     <ClCompile Include="OpenToonz\tblur.cpp" />
     <ClCompile Include="OpenToonz\tcheckboard.cpp" />
+    <ClCompile Include="OpenToonz\tdoublekeyframe.cpp" />
     <ClCompile Include="OpenToonz\tdoubleparam.cpp" />
     <ClCompile Include="OpenToonz\texception.cpp" />
     <ClCompile Include="OpenToonz\tfilepath.cpp" />
@@ -280,6 +287,7 @@
     <ClCompile Include="OpenToonz\tspectrumparam.cpp" />
     <ClCompile Include="OpenToonz\tstream.cpp" />
     <ClCompile Include="OpenToonz\tstring.cpp" />
+    <ClCompile Include="OpenToonz\tundo.cpp" />
     <ClCompile Include="SheetCanvas.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -319,10 +327,20 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_SCRIPT_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtWidgets"</Command>
     </CustomBuild>
     <ClInclude Include="OpenToonz\tcacheresource.h" />
+    <ClInclude Include="OpenToonz\tcg\algorithm.h" />
+    <ClInclude Include="OpenToonz\tcg\function_types.h" />
+    <ClInclude Include="OpenToonz\tcg\pool.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_algorithm.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_function_types.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_point_ops.h" />
+    <ClInclude Include="OpenToonz\tcg\tcg_pool.h" />
     <ClInclude Include="OpenToonz\tfilepath_io.h" />
     <ClInclude Include="OpenToonz\tfxcachemanager.h" />
+    <ClInclude Include="OpenToonz\toonz\stage.h" />
+    <ClInclude Include="OpenToonz\toonz\txshcell.h" />
     <ClInclude Include="OpenToonz\tpassivecachemanager.h" />
     <ClInclude Include="OpenToonz\trenderresourcemanager.h" />
+    <ClInclude Include="OpenToonz\tunit.h" />
     <ClInclude Include="OpenToonz\tzeraryfx.h" />
     <CustomBuild Include="OpenToonz\checkbox.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>

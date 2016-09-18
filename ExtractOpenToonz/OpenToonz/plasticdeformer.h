@@ -41,7 +41,7 @@
   \a deleted will result in a crash. Altering the rigidities results in undefined deformations
   until the deformer is recompiled against them.
 */
-class DVAPI PlasticDeformer
+class PlasticDeformer
 {
 	class Imp;
 	std::unique_ptr<Imp> m_imp;

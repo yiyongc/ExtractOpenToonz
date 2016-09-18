@@ -289,7 +289,7 @@ public slots:
   //void splitEdge_mesh_undo();
   //void cutEdges_mesh_undo();
 
-  //void deleteSelectedVertex_undo();
+  void deleteSelectedVertex_undo();
 
   //void setKey_undo();
   //void setGlobalKey_undo();

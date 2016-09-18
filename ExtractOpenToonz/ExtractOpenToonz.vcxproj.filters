@@ -341,6 +341,30 @@
     <ClCompile Include="OpenToonz\tparamset.cpp">
       <Filter>OpenToonz</Filter>
     </ClCompile>
+    <ClCompile Include="OpenToonz\plastictool_build.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tundo.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\plasticdeformerstorage.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\plastichandle.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\plasticskeleton.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\plasticskeletondeformation.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\plasticdeformer.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tdoublekeyframe.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="extractopentoonz.h">
@@ -880,6 +904,36 @@
       <Filter>OpenToonz</Filter>
     </ClInclude>
     <ClInclude Include="OpenToonz\tfilepath_io.h">
+      <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\txshcell.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\toonz\stage.h">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tcg\tcg_point_ops.h">
+      <Filter>OpenToonz\tcg</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tcg\algorithm.h">
+      <Filter>OpenToonz\tcg</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tcg\tcg_algorithm.h">
+      <Filter>OpenToonz\tcg</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tcg\function_types.h">
+      <Filter>OpenToonz\tcg</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tcg\tcg_function_types.h">
+      <Filter>OpenToonz\tcg</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tcg\tcg_pool.h">
+      <Filter>OpenToonz\tcg</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tcg\pool.h">
+      <Filter>OpenToonz\tcg</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenToonz\tunit.h">
       <Filter>OpenToonz</Filter>
     </ClInclude>
   </ItemGroup>

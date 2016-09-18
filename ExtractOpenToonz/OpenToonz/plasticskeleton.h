@@ -28,6 +28,7 @@
 #include "tcg/tcg_edge.h"
 #include "tcg/tcg_face.h"
 #include "tcg/tcg_mesh.h"
+#include "tcg/hpp/mesh.hpp"
 
 #ifdef REMOVE_INCLUDE_HPP
 #undef INCLUDE_HPP
