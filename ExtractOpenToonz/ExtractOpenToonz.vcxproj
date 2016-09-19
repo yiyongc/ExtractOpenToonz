@@ -258,6 +258,7 @@
     <ClCompile Include="OpenToonz\plasticskeleton.cpp" />
     <ClCompile Include="OpenToonz\plasticskeletondeformation.cpp" />
     <ClCompile Include="OpenToonz\plastictool_build.cpp" />
+    <ClCompile Include="OpenToonz\selection.cpp" />
     <ClCompile Include="OpenToonz\tbigmemorymanager.cpp" />
     <ClCompile Include="OpenToonz\tblur.cpp" />
     <ClCompile Include="OpenToonz\tcheckboard.cpp" />
@@ -272,6 +273,8 @@
     <ClCompile Include="OpenToonz\timage.cpp" />
     <ClCompile Include="OpenToonz\tmeshimage.cpp" />
     <ClCompile Include="OpenToonz\tnotanimatableparam.cpp" />
+    <ClCompile Include="OpenToonz\tools\tool.cpp" />
+    <ClCompile Include="OpenToonz\toonz\txshcell.cpp" />
     <ClCompile Include="OpenToonz\toperators.cpp" />
     <ClCompile Include="OpenToonz\tparam.cpp" />
     <ClCompile Include="OpenToonz\tparamset.cpp" />
@@ -285,6 +288,7 @@
     <ClCompile Include="OpenToonz\trop_borders.cpp" />
     <ClCompile Include="OpenToonz\tsmartpointer.cpp" />
     <ClCompile Include="OpenToonz\tspectrumparam.cpp" />
+    <ClCompile Include="OpenToonz\tstageobject.cpp" />
     <ClCompile Include="OpenToonz\tstream.cpp" />
     <ClCompile Include="OpenToonz\tstring.cpp" />
     <ClCompile Include="OpenToonz\tundo.cpp" />
@@ -744,7 +748,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_Win32="msvc2013_opengl_32" MocOptions="" />
+      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_Win32="msvc2013_opengl" MocOptions="" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

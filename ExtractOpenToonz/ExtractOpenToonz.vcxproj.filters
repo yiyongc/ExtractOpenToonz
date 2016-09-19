@@ -365,6 +365,18 @@
     <ClCompile Include="OpenToonz\tdoublekeyframe.cpp">
       <Filter>OpenToonz</Filter>
     </ClCompile>
+    <ClCompile Include="OpenToonz\toonz\txshcell.cpp">
+      <Filter>OpenToonz\toonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\selection.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tools\tool.cpp">
+      <Filter>OpenToonz\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenToonz\tstageobject.cpp">
+      <Filter>OpenToonz</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="extractopentoonz.h">

@@ -332,8 +332,8 @@ public:
           for property group 0).
 \sa       See tooloptions.h for more details. */
 
-  virtual ToolOptionsBox *
-  createOptionsBox();  //!< Factory function returning a newly created
+  /*virtual ToolOptionsBox *
+  createOptionsBox();*/  //!< Factory function returning a newly created
                        //!  GUI options box to be displayed for the tool
 
   void setViewer(Viewer *viewer) {
@@ -475,7 +475,7 @@ return true if the method execution can have changed the current tool
 transformation.
 \sa getCurrentColumnMatrix().
 */
-  virtual void updateMatrix();
+  //virtual void updateMatrix();
 
   /*!
    Add a context menu to the actual tool, as for example pressing right mouse

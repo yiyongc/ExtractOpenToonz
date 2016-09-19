@@ -186,7 +186,7 @@ public:
   ToolType getToolType() const override;
   int getCursorId() const override { return ToolCursor::SplineEditorCursor; }
 
-  ToolOptionsBox *createOptionsBox() override;
+  //ToolOptionsBox *createOptionsBox() override;
 
   TPropertyGroup *getProperties(int idx) override { return &m_propGroup[idx]; }
 

@@ -42,7 +42,7 @@ TPointD closestMeshVertexPos(const TPointD &pos, double *distance = 0) {
   // displayed with
   //       its level owner's dpi, RATHER than its own.
 
-  const TPointD &dpi = sl->getDpi(imageCell.getFrameId());
+  const TPointD &dpi = TPointD(300, 300)/*sl->getDpi(imageCell.getFrameId())*/;
   assert(dpi.x > 0.0 && dpi.y > 0.0);
 
   // Cast pos to image coordinates
