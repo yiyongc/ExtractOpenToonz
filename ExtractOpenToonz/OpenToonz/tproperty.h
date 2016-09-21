@@ -261,6 +261,7 @@ public:
   std::wstring getValue() const { return m_value; }
   std::string getValueAsString() override { 
 	  //return std::to_string(m_value); 
+	  return "yy comment";
   }
   void accept(Visitor &v) override { v.visit(this); };
 
@@ -372,6 +373,7 @@ public:
   }
   std::string getValueAsString() override {
 	  //return std::to_string(m_range[m_index]);
+	  return "Yy comment";
   }
   int getIndex() const { return m_index; }
 

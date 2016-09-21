@@ -129,6 +129,9 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_tabbar.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tcolumnhandle.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_tframehandle.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -213,6 +216,9 @@
     <ClCompile Include="GeneratedFiles\Release\moc_tabbar.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_tcolumnhandle.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_tframehandle.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -257,13 +263,16 @@
     <ClCompile Include="OpenToonz\plastichandle.cpp" />
     <ClCompile Include="OpenToonz\plasticskeleton.cpp" />
     <ClCompile Include="OpenToonz\plasticskeletondeformation.cpp" />
+    <ClCompile Include="OpenToonz\plastictool.cpp" />
     <ClCompile Include="OpenToonz\plastictool_build.cpp" />
+    <ClCompile Include="OpenToonz\plastictool_meshedit.cpp" />
     <ClCompile Include="OpenToonz\selection.cpp" />
     <ClCompile Include="OpenToonz\tbigmemorymanager.cpp" />
     <ClCompile Include="OpenToonz\tblur.cpp" />
     <ClCompile Include="OpenToonz\tcheckboard.cpp" />
     <ClCompile Include="OpenToonz\tdoublekeyframe.cpp" />
     <ClCompile Include="OpenToonz\tdoubleparam.cpp" />
+    <ClCompile Include="OpenToonz\tdoubleparamrelayproperty.cpp" />
     <ClCompile Include="OpenToonz\texception.cpp" />
     <ClCompile Include="OpenToonz\tfilepath.cpp" />
     <ClCompile Include="OpenToonz\tfilepath_io.cpp" />
@@ -274,6 +283,9 @@
     <ClCompile Include="OpenToonz\tmeshimage.cpp" />
     <ClCompile Include="OpenToonz\tnotanimatableparam.cpp" />
     <ClCompile Include="OpenToonz\tools\tool.cpp" />
+    <ClCompile Include="OpenToonz\toonz\stage.cpp" />
+    <ClCompile Include="OpenToonz\toonz\tcolumnhandle.cpp" />
+    <ClCompile Include="OpenToonz\toonz\tstageobject.cpp" />
     <ClCompile Include="OpenToonz\toonz\txshcell.cpp" />
     <ClCompile Include="OpenToonz\toperators.cpp" />
     <ClCompile Include="OpenToonz\tparam.cpp" />
@@ -282,13 +294,13 @@
     <ClCompile Include="OpenToonz\tpixelparam.cpp" />
     <ClCompile Include="OpenToonz\tpixelutils.cpp" />
     <ClCompile Include="OpenToonz\tpointparam.cpp" />
+    <ClCompile Include="OpenToonz\tproperty.cpp" />
     <ClCompile Include="OpenToonz\trangeparam.cpp" />
     <ClCompile Include="OpenToonz\traster.cpp" />
     <ClCompile Include="OpenToonz\trasterimage.cpp" />
     <ClCompile Include="OpenToonz\trop_borders.cpp" />
     <ClCompile Include="OpenToonz\tsmartpointer.cpp" />
     <ClCompile Include="OpenToonz\tspectrumparam.cpp" />
-    <ClCompile Include="OpenToonz\tstageobject.cpp" />
     <ClCompile Include="OpenToonz\tstream.cpp" />
     <ClCompile Include="OpenToonz\tstring.cpp" />
     <ClCompile Include="OpenToonz\tundo.cpp" />
@@ -341,6 +353,16 @@
     <ClInclude Include="OpenToonz\tfilepath_io.h" />
     <ClInclude Include="OpenToonz\tfxcachemanager.h" />
     <ClInclude Include="OpenToonz\toonz\stage.h" />
+    <CustomBuild Include="OpenToonz\toonz\tcolumnhandle.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing tcolumnhandle.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_SCRIPT_LIB -DQT_WIDGETS_LIB "-I$(ProjectDir)\Third Party\glut-3.7.6-bin" "-I$(ProjectDir)\Third Party\boost_1_55_0" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtWidgets"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing tcolumnhandle.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_OPENGL_LIB -DQT_SCRIPT_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtOpenGL" "-I$(QTDIR)\include\QtScript" "-I$(QTDIR)\include\QtWidgets"</Command>
+    </CustomBuild>
     <ClInclude Include="OpenToonz\toonz\txshcell.h" />
     <ClInclude Include="OpenToonz\tpassivecachemanager.h" />
     <ClInclude Include="OpenToonz\trenderresourcemanager.h" />

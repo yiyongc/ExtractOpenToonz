@@ -1,36 +1,36 @@
 
 
-#include "toonz/tstageobject.h"
+#include "tstageobject.h"
 
 // TnzLib includes
-//#include "toonz/tstageobjecttree.h"
-//#include "toonz/tstageobjectspline.h"
-#include "toonz/txsheet.h"
-//#include "toonz/observer.h"
-//#include "toonz/txshlevelcolumn.h"
-#include "toonz/txshcell.h"
-#include "toonz/stage.h"
-//#include "toonz/tcamera.h"
-//#include "toonz/doubleparamcmd.h"
-//#include "toonz/tpinnedrangeset.h"
+//#include "tstageobjecttree.h"
+//#include "tstageobjectspline.h"
+#include "txsheet.h"
+//#include "observer.h"
+//#include "txshlevelcolumn.h"
+#include "txshcell.h"
+#include "stage.h"
+//#include "tcamera.h"
+//#include "doubleparamcmd.h"
+//#include "tpinnedrangeset.h"
 
 // TnzExt includes
-#include "plasticskeleton.h"
-#include "plasticskeletondeformation.h"
-#include "plasticdeformerstorage.h"
+#include "../plasticskeleton.h"
+#include "../plasticskeletondeformation.h"
+#include "../plasticdeformerstorage.h"
 
 // TnzCore includes
-#include "tstream.h"
-#include "tstroke.h"
-#include "tconvert.h"
-#include "tundo.h"
-#include "tconst.h"
+#include "../tstream.h"
+#include "../tstroke.h"
+#include "../tconvert.h"
+#include "../tundo.h"
+#include "../tconst.h"
 
 // Qt includes
 #include <QMetaObject>
 
 // tcg includes
-#include "tcg/tcg_function_types.h"
+#include "../tcg/tcg_function_types.h"
 
 // STD includes
 #include <fstream>
@@ -108,8 +108,7 @@ const int StageObjectIndexMask = ((1 << StageObjectTypeShift) - 1);
 //    , m_offset(data->m_offset)
 //    , m_name(data->m_name)
 //    , m_isOpened(data->m_isOpened)
-//    //, m_pinnedRangeSet(data->m_pinnedRangeSet->clone()) 
-//{}
+//    , m_pinnedRangeSet(data->m_pinnedRangeSet->clone()) {}
 //
 ////---------------------------------------------------------------------------
 //
@@ -159,7 +158,7 @@ const int StageObjectIndexMask = ((1 << StageObjectTypeShift) - 1);
 //
 ////-----------------------------------------------------------------------------
 //
-//TStageObjectId::~TStageObjectId() {}
+TStageObjectId::~TStageObjectId() {}
 //
 ////-----------------------------------------------------------------------------
 //
@@ -209,10 +208,10 @@ const int StageObjectIndexMask = ((1 << StageObjectTypeShift) - 1);
 //
 ////-----------------------------------------------------------------------------
 //
-//const TStageObjectId TStageObjectId::ColumnId(int index) {
-//  assert(0 <= index && index <= StageObjectMaxIndex);
-//  return TStageObjectId(COLUMN << StageObjectTypeShift | index);
-//}
+const TStageObjectId TStageObjectId::ColumnId(int index) {
+  assert(0 <= index && index <= StageObjectMaxIndex);
+  return TStageObjectId(COLUMN << StageObjectTypeShift | index);
+}
 //
 ////-----------------------------------------------------------------------------
 //
@@ -357,6 +356,10 @@ const int StageObjectIndexMask = ((1 << StageObjectTypeShift) - 1);
 ////    TStageObject  implementation
 ////************************************************************************************************
 //
+TStageObject::TStageObject() {
+
+}
+
 //TStageObject::TStageObject(TStageObjectTree *tree, TStageObjectId id)
 //    : m_tree(tree)
 //    , m_id(id)
@@ -387,7 +390,8 @@ const int StageObjectIndexMask = ((1 << StageObjectTypeShift) - 1);
 //    , m_noScaleZ(0)
 //    , m_pinnedRangeSet(0)
 //    , m_ikflag(0)
-//    , m_groupSelector(-1) {
+//    , m_groupSelector(-1) 
+//{
 //  // NOTA: per le unita' di misura controlla anche tooloptions.cpp
 //  m_x->setName("W_EW");
 //  m_x->setMeasureName("length.x");
@@ -451,7 +455,7 @@ const int StageObjectIndexMask = ((1 << StageObjectTypeShift) - 1);
 //
 ////-----------------------------------------------------------------------------
 //
-//TStageObject::~TStageObject() {
+TStageObject::~TStageObject() {
 //  if (m_spline) {
 //    if (m_posPath) m_spline->removeParam(m_posPath.getPointer());
 //    m_spline->release();
@@ -477,7 +481,7 @@ const int StageObjectIndexMask = ((1 << StageObjectTypeShift) - 1);
 //
 //  delete m_camera;
 //  delete m_pinnedRangeSet;
-//}
+}
 //
 ////-----------------------------------------------------------------------------
 //
@@ -505,7 +509,7 @@ const int StageObjectIndexMask = ((1 << StageObjectTypeShift) - 1);
 //
 ////-----------------------------------------------------------------------------
 //
-//void TStageObject::onChange(const class TParamChange &c) {
+void TStageObject::onChange(const class TParamChange &c) {
 //  // Rationale: Since a stage object holds many parameters (or par references),
 //  // it may receive multiple notifications at the same time - but it should
 //  // actually refresh its data only ONCE for 'em all.
@@ -520,7 +524,7 @@ const int StageObjectIndexMask = ((1 << StageObjectTypeShift) - 1);
 //    m_lazyData.invalidate();  // Both invalidate placement AND keyframes
 //  else
 //    invalidate();  // Invalidate placement only
-//}
+}
 //
 ////-----------------------------------------------------------------------------
 //
@@ -528,7 +532,7 @@ const int StageObjectIndexMask = ((1 << StageObjectTypeShift) - 1);
 //
 ////-----------------------------------------------------------------------------
 //
-//double TStageObject::paramsTime(double t) const {
+double TStageObject::paramsTime(double t) const {
 //  const KeyframeMap &keyframes = lazyData().m_keyframes;
 //
 //  if (m_cycleEnabled && keyframes.size() > 1) {
@@ -542,7 +546,8 @@ const int StageObjectIndexMask = ((1 << StageObjectTypeShift) - 1);
 //    return firstT + ((it - firstT) % tRange) + ft;
 //  } else
 //    return t;
-//}
+	return 1.1;
+}
 //
 ////-----------------------------------------------------------------------------
 //
@@ -1148,10 +1153,10 @@ const int StageObjectIndexMask = ((1 << StageObjectTypeShift) - 1);
 //
 ////-----------------------------------------------------------------------------
 //
-//PlasticSkeletonDeformationP TStageObject::getPlasticSkeletonDeformation()
-//    const {
-//  return m_skeletonDeformation;
-//}
+PlasticSkeletonDeformationP TStageObject::getPlasticSkeletonDeformation()
+    const {
+  return m_skeletonDeformation;
+}
 //
 ////-----------------------------------------------------------------------------
 //
@@ -1465,19 +1470,19 @@ void TStageObject::setPlasticSkeletonDeformation(
 //
 ////-----------------------------------------------------------------------------
 //
-void TStageObject::invalidate(LazyData &ld) const {
-  // Since this is an invalidation function, access to the invalidable data
-  // should
-  // not trigger a data update
-  ld.m_time = -1;
-
-  std::list<TStageObject *>::const_iterator cit = m_children.begin();
-  for (; cit != m_children.end(); ++cit) (*cit)->invalidate();
-}
+//void TStageObject::invalidate(LazyData &ld) const {
+//  // Since this is an invalidation function, access to the invalidable data
+//  // should
+//  // not trigger a data update
+//  ld.m_time = -1;
+//
+//  std::list<TStageObject *>::const_iterator cit = m_children.begin();
+//  for (; cit != m_children.end(); ++cit) (*cit)->invalidate();
+//}
 //
 ////-----------------------------------------------------------------------------
 //
-void TStageObject::invalidate() { invalidate(m_lazyData(tcg::direct_access)); }
+void TStageObject::invalidate() { /*invalidate(m_lazyData(tcg::direct_access));*/ }
 //
 ////-----------------------------------------------------------------------------
 //
@@ -1488,122 +1493,122 @@ void TStageObject::invalidate() { invalidate(m_lazyData(tcg::direct_access)); }
 ////-----------------------------------------------------------------------------
 //
 //// Rebuild the keyframes map
-void TStageObject::updateKeyframes(LazyData &ld) const {
-  //KeyframeMap &keyframes = ld.m_keyframes;
-
-  //// Clear the map
-  //keyframes.clear();
-
-  //// Gather all sensible parameters in a vector
-  //std::vector<TDoubleParam *> params;
-
-  //if (m_status == XY) {
-  //  params.push_back(m_x.getPointer());
-  //  params.push_back(m_y.getPointer());
-  //} else {
-  //  params.push_back(m_posPath.getPointer());
-  //}
-
-  //params.push_back(m_z.getPointer());
-  //params.push_back(m_so.getPointer());
-  //params.push_back(m_rot.getPointer());
-  //params.push_back(m_scalex.getPointer());
-  //params.push_back(m_scaley.getPointer());
-  //params.push_back(m_scale.getPointer());
-  //params.push_back(m_shearx.getPointer());
-  //params.push_back(m_sheary.getPointer());
-
-  //if (m_skeletonDeformation) {
-  //  params.push_back(m_skeletonDeformation->skeletonIdsParam().getPointer());
-
-  //  // Add Plastic Skeleton params too
-  //  SkD::vd_iterator vdt, vdEnd;
-  //  m_skeletonDeformation->vertexDeformations(vdt, vdEnd);
-
-  //  for (; vdt != vdEnd; ++vdt) {
-  //    const std::pair<const QString *, SkVD *> &vd = *vdt;
-
-  //    for (int p = 0; p < SkVD::PARAMS_COUNT; ++p)
-  //      params.push_back(vd.second->m_params[p].getPointer());
-  //  }
-  //}
-
-  //// Scan each parameter for a key frame - add each in a set
-  //std::set<int> frames;
-
-  //int p, pCount = params.size();
-  //for (p = 0; p < pCount; ++p) {
-  //  TDoubleParam *param = params[p];
-
-  //  int k, kCount = param->getKeyframeCount();
-  //  for (k = 0; k < kCount; ++k) {
-  //    const TDoubleKeyframe &kf = param->getKeyframe(k);
-  //    frames.insert((int)kf.m_frame);
-  //  }
-  //}
-
-  //// Traverse said set and build a TStageObject keyframe for each found instant
-
-  //std::set<int>::iterator ft, fEnd(frames.end());
-  //for (ft = frames.begin(); ft != fEnd; ++ft) {
-  //  int f = *ft;
-
-  //  // Add values
-  //  TStageObject::Keyframe stageKf;
-  //  stageKf.m_channels[TStageObject::T_Angle]  = m_rot->getKeyframeAt(f);
-  //  stageKf.m_channels[TStageObject::T_X]      = m_x->getKeyframeAt(f);
-  //  stageKf.m_channels[TStageObject::T_Y]      = m_y->getKeyframeAt(f);
-  //  stageKf.m_channels[TStageObject::T_Z]      = m_z->getKeyframeAt(f);
-  //  stageKf.m_channels[TStageObject::T_SO]     = m_so->getKeyframeAt(f);
-  //  stageKf.m_channels[TStageObject::T_ScaleX] = m_scalex->getKeyframeAt(f);
-  //  stageKf.m_channels[TStageObject::T_ScaleY] = m_scaley->getKeyframeAt(f);
-  //  stageKf.m_channels[TStageObject::T_Scale]  = m_scale->getKeyframeAt(f);
-  //  stageKf.m_channels[TStageObject::T_Path]   = m_posPath->getKeyframeAt(f);
-  //  stageKf.m_channels[TStageObject::T_ShearX] = m_shearx->getKeyframeAt(f);
-  //  stageKf.m_channels[TStageObject::T_ShearY] = m_sheary->getKeyframeAt(f);
-
-  //  if (m_skeletonDeformation)
-  //    m_skeletonDeformation->getKeyframeAt(f, stageKf.m_skeletonKeyframe);
-
-  //  stageKf.m_isKeyframe = true;
-
-  //  // Build the stage keyframe's global ease factors
-  //  stageKf.m_easeIn  = -1;
-  //  stageKf.m_easeOut = -1;
-
-  //  TDoubleKeyframe::Type type = TDoubleKeyframe::None;
-  //  bool easeOk                = true;
-
-  //  // Start from analyzing standard channels
-  //  for (int c = 0; easeOk && c < T_ChannelCount; ++c) {
-  //    const TDoubleKeyframe &kf = stageKf.m_channels[c];
-  //    if (!kf.m_isKeyframe) continue;
-
-  //    easeOk = touchEaseAndCompare(kf, stageKf, type);
-  //  }
-
-  //  // Finally, check the skeleton deformation keyframes
-  //  const std::map<QString, SkVD::Keyframe> &vdfs =
-  //      stageKf.m_skeletonKeyframe.m_vertexKeyframes;
-
-  //  std::map<QString, SkVD::Keyframe>::const_iterator vdft, vdfEnd(vdfs.end());
-  //  for (vdft = vdfs.begin(); easeOk && vdft != vdfEnd; ++vdft) {
-  //    for (int p = 0; p < SkVD::PARAMS_COUNT; ++p) {
-  //      const TDoubleKeyframe &kf = vdft->second.m_keyframes[p];
-  //      if (!kf.m_isKeyframe) continue;
-
-  //      easeOk = touchEaseAndCompare(kf, stageKf, type);
-  //    }
-  //  }
-
-  //  keyframes[f] = stageKf;
-  //}
-}
+//void TStageObject::updateKeyframes(LazyData &ld) const {
+//  KeyframeMap &keyframes = ld.m_keyframes;
+//
+//  // Clear the map
+//  keyframes.clear();
+//
+//  // Gather all sensible parameters in a vector
+//  std::vector<TDoubleParam *> params;
+//
+//  if (m_status == XY) {
+//    params.push_back(m_x.getPointer());
+//    params.push_back(m_y.getPointer());
+//  } else {
+//    params.push_back(m_posPath.getPointer());
+//  }
+//
+//  params.push_back(m_z.getPointer());
+//  params.push_back(m_so.getPointer());
+//  params.push_back(m_rot.getPointer());
+//  params.push_back(m_scalex.getPointer());
+//  params.push_back(m_scaley.getPointer());
+//  params.push_back(m_scale.getPointer());
+//  params.push_back(m_shearx.getPointer());
+//  params.push_back(m_sheary.getPointer());
+//
+//  if (m_skeletonDeformation) {
+//    params.push_back(m_skeletonDeformation->skeletonIdsParam().getPointer());
+//
+//    // Add Plastic Skeleton params too
+//    SkD::vd_iterator vdt, vdEnd;
+//    m_skeletonDeformation->vertexDeformations(vdt, vdEnd);
+//
+//    for (; vdt != vdEnd; ++vdt) {
+//      const std::pair<const QString *, SkVD *> &vd = *vdt;
+//
+//      for (int p = 0; p < SkVD::PARAMS_COUNT; ++p)
+//        params.push_back(vd.second->m_params[p].getPointer());
+//    }
+//  }
+//
+//  // Scan each parameter for a key frame - add each in a set
+//  std::set<int> frames;
+//
+//  int p, pCount = params.size();
+//  for (p = 0; p < pCount; ++p) {
+//    TDoubleParam *param = params[p];
+//
+//    int k, kCount = param->getKeyframeCount();
+//    for (k = 0; k < kCount; ++k) {
+//      const TDoubleKeyframe &kf = param->getKeyframe(k);
+//      frames.insert((int)kf.m_frame);
+//    }
+//  }
+//
+//  // Traverse said set and build a TStageObject keyframe for each found instant
+//
+//  std::set<int>::iterator ft, fEnd(frames.end());
+//  for (ft = frames.begin(); ft != fEnd; ++ft) {
+//    int f = *ft;
+//
+//    // Add values
+//    TStageObject::Keyframe stageKf;
+//    stageKf.m_channels[TStageObject::T_Angle]  = m_rot->getKeyframeAt(f);
+//    stageKf.m_channels[TStageObject::T_X]      = m_x->getKeyframeAt(f);
+//    stageKf.m_channels[TStageObject::T_Y]      = m_y->getKeyframeAt(f);
+//    stageKf.m_channels[TStageObject::T_Z]      = m_z->getKeyframeAt(f);
+//    stageKf.m_channels[TStageObject::T_SO]     = m_so->getKeyframeAt(f);
+//    stageKf.m_channels[TStageObject::T_ScaleX] = m_scalex->getKeyframeAt(f);
+//    stageKf.m_channels[TStageObject::T_ScaleY] = m_scaley->getKeyframeAt(f);
+//    stageKf.m_channels[TStageObject::T_Scale]  = m_scale->getKeyframeAt(f);
+//    stageKf.m_channels[TStageObject::T_Path]   = m_posPath->getKeyframeAt(f);
+//    stageKf.m_channels[TStageObject::T_ShearX] = m_shearx->getKeyframeAt(f);
+//    stageKf.m_channels[TStageObject::T_ShearY] = m_sheary->getKeyframeAt(f);
+//
+//    if (m_skeletonDeformation)
+//      m_skeletonDeformation->getKeyframeAt(f, stageKf.m_skeletonKeyframe);
+//
+//    stageKf.m_isKeyframe = true;
+//
+//    // Build the stage keyframe's global ease factors
+//    stageKf.m_easeIn  = -1;
+//    stageKf.m_easeOut = -1;
+//
+//    TDoubleKeyframe::Type type = TDoubleKeyframe::None;
+//    bool easeOk                = true;
+//
+//    // Start from analyzing standard channels
+//    for (int c = 0; easeOk && c < T_ChannelCount; ++c) {
+//      const TDoubleKeyframe &kf = stageKf.m_channels[c];
+//      if (!kf.m_isKeyframe) continue;
+//
+//      easeOk = touchEaseAndCompare(kf, stageKf, type);
+//    }
+//
+//    // Finally, check the skeleton deformation keyframes
+//    const std::map<QString, SkVD::Keyframe> &vdfs =
+//        stageKf.m_skeletonKeyframe.m_vertexKeyframes;
+//
+//    std::map<QString, SkVD::Keyframe>::const_iterator vdft, vdfEnd(vdfs.end());
+//    for (vdft = vdfs.begin(); easeOk && vdft != vdfEnd; ++vdft) {
+//      for (int p = 0; p < SkVD::PARAMS_COUNT; ++p) {
+//        const TDoubleKeyframe &kf = vdft->second.m_keyframes[p];
+//        if (!kf.m_isKeyframe) continue;
+//
+//        easeOk = touchEaseAndCompare(kf, stageKf, type);
+//      }
+//    }
+//
+//    keyframes[f] = stageKf;
+//  }
+//}
 //
 ////-----------------------------------------------------------------------------
 //
 void TStageObject::updateKeyframes() {
-  return updateKeyframes(m_lazyData(tcg::direct_access));
+//  return updateKeyframes(m_lazyData(tcg::direct_access));
 }
 //
 ////-----------------------------------------------------------------------------

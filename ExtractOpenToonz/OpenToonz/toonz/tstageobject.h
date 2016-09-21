@@ -160,6 +160,7 @@ the tree or
   in general a new node in the tree.
 */
   TStageObject(TStageObjectTree *tree, TStageObjectId id);
+  TStageObject();
   /*!
   This is the destructor.
 */
@@ -170,7 +171,7 @@ the tree or
 
   //! Sets the object's id.
   void setId(const TStageObjectId &id) {
-    if (id != TStageObjectId::NoneId) m_id = id;
+    //if (id != TStageObjectId::NoneId) m_id = id;
   }
 
   void setName(const std::string &name);
@@ -505,9 +506,9 @@ private:
   };
 
 private:
-  tcg::invalidable<LazyData> m_lazyData;
+  //tcg::invalidable<LazyData> m_lazyData;
 
-  TStageObjectId m_id;
+  //TStageObjectId m_id;
   TStageObjectTree *m_tree;
   TStageObject *m_parent;
   std::list<TStageObject *> m_children;
@@ -562,13 +563,13 @@ private:
 private:
   // Lazy data-related functions
 
-  LazyData &lazyData();
-  const LazyData &lazyData() const;
+  //LazyData &lazyData();
+  //const LazyData &lazyData() const;
 
-  void update(LazyData &ld) const;
+  //void update(LazyData &ld) const;
 
-  void invalidate(LazyData &ld) const;
-  void updateKeyframes(LazyData &ld) const;
+  //void invalidate(LazyData &ld) const;
+  //void updateKeyframes(LazyData &ld) const;
 
   void onChange(const class TParamChange &c) override;
 };
