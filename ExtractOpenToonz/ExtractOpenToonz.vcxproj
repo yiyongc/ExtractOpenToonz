@@ -305,6 +305,8 @@
     <ClCompile Include="OpenToonz\tstring.cpp" />
     <ClCompile Include="OpenToonz\tundo.cpp" />
     <ClCompile Include="SheetCanvas.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
+    <ClCompile Include="SkeletonVertex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="extractopentoonz.h">
@@ -332,6 +334,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_extractopentoonz.h" />
+    <ClInclude Include="Skeleton.h" />
+    <ClInclude Include="SkeletonVertex.h" />
     <CustomBuild Include="OpenToonz\histogram.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing histogram.h...</Message>
