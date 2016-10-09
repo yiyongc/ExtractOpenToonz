@@ -6,7 +6,8 @@
 #include <QWidget>
 #include <qopengl.h>
 #include <QMouseEvent>
-
+#include "Skeleton.h"
+#include <glut.h>
 
 class SheetCanvas : public QGLWidget {
 	
@@ -37,8 +38,14 @@ private:
 	int yRot;
 	int zRot;
 	QPoint lastPos;
+	bool drawSkel = false;
+	Skeleton* m_skeleton;
+
+	GLdouble ox = 0.0, oy = 0.0, oz = 0.0;
 
 	void draw();
+	void drawVertex(SkeletonVertex* v);
+	void Mouse(double x, double y);
 
 	public slots:
 	void setXRotation(int angle);

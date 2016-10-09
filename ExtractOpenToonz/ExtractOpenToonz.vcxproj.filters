@@ -401,6 +401,12 @@
     <ClCompile Include="OpenToonz\plastictool_meshedit.cpp">
       <Filter>OpenToonz</Filter>
     </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeletonVertex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="extractopentoonz.h">
@@ -974,6 +980,12 @@
     </ClInclude>
     <ClInclude Include="OpenToonz\tunit.h">
       <Filter>OpenToonz</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeletonVertex.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

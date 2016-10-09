@@ -7,7 +7,7 @@ xPos(0),
 yPos(0),
 parent_id(-1) {}
 
-SkeletonVertex::SkeletonVertex(int x, int y) :
+SkeletonVertex::SkeletonVertex(double x, double y) :
 xPos(x),
 yPos(y),
 parent_id(-1) {}
@@ -30,4 +30,12 @@ int SkeletonVertex::getID() {
 
 void SkeletonVertex::setID(int id) {
 	vertex_id = id;
+}
+
+double SkeletonVertex::getXPos() {
+	return xPos;
+}
+
+double SkeletonVertex::getYPos() {
+	return yPos;
 }

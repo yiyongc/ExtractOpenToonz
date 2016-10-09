@@ -15,10 +15,11 @@ public:
 	bool removeVertex(int id);
 	int getSelectedVertex();
 	void setSelectedVertex(int vertexID);
+	std::vector<SkeletonVertex*> getVertices();
 
 private:
 	std::vector<SkeletonVertex*> joints;
-	int m_selectedVertex = -1;
+	int m_selectedVertex;
 };
 
 

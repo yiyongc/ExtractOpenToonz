@@ -5,7 +5,7 @@ class SkeletonVertex {
 
 public:
 	SkeletonVertex();
-	SkeletonVertex(int x, int y);
+	SkeletonVertex(double x, double y);
 	~SkeletonVertex();
 
 	int getParent();
@@ -14,9 +14,12 @@ public:
 	int getID();
 	void setID(int id);
 
+	double getXPos();
+	double getYPos();
+
 private:
-	int xPos;
-	int yPos;
+	double xPos;
+	double yPos;
 	int parent_id;
 	int vertex_id;
 

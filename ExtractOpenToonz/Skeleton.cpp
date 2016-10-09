@@ -1,6 +1,8 @@
 #include "Skeleton.h"
 
-Skeleton::Skeleton() {}
+Skeleton::Skeleton() {
+	m_selectedVertex = -1;
+}
 
 Skeleton::~Skeleton() {}
 
@@ -32,4 +34,8 @@ bool Skeleton::removeVertex(int id) {
 	}
 
 	return false;
+}
+
+std::vector<SkeletonVertex*> Skeleton::getVertices() {
+	return joints;
 }

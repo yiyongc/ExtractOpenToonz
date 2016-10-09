@@ -5,6 +5,7 @@ SheetCanvas::SheetCanvas(QWidget* parent) {
 	xRot = 0;
 	yRot = 0;
 	zRot = 0;
+	m_skeleton = NULL;
 }
 
 SheetCanvas::~SheetCanvas() {
@@ -92,7 +93,15 @@ void SheetCanvas::paintGL() {
 	glRotatef(xRot / 16.0, 1.0, 0.0, 0.0);
 	glRotatef(yRot / 16.0, 0.0, 1.0, 0.0);
 	glRotatef(zRot / 16.0, 0.0, 0.0, 1.0);
-	draw();
+	//draw();
+
+	if (drawSkel == false)
+		draw();
+	else {
+		for (int i = 0; i < m_skeleton->getVertexCount(); i++) {
+			drawVertex(m_skeleton->getVertices()[i]);
+		}
+	}
 }
 
 void SheetCanvas::resizeGL(int width, int height) {
@@ -121,6 +130,17 @@ QSize SheetCanvas::sizeHint() const
 
 void SheetCanvas::mousePressEvent(QMouseEvent *event) {
 	lastPos = event->pos();
+
+	if (m_skeleton == NULL) {
+		m_skeleton = new Skeleton();
+		drawSkel = true;
+	}
+	Mouse(lastPos.x(), lastPos.y());
+	SkeletonVertex* vertexToAdd = new SkeletonVertex(ox, oy);
+	vertexToAdd->setID(m_skeleton->getVertexCount());
+	m_skeleton->addVertex(vertexToAdd);
+	m_skeleton->setSelectedVertex(vertexToAdd->getID());
+
 }
 
 void SheetCanvas::mouseMoveEvent(QMouseEvent *event) {
@@ -177,4 +197,35 @@ void SheetCanvas::draw() {
 	glVertex3f(-1, -1, 0);
 	glVertex3f(0, 0, 1.2);
 	glEnd();
+}
+
+void SheetCanvas::drawVertex(SkeletonVertex* v) {
+	double x = v->getXPos();
+	double y = v->getYPos();
+
+	
+
+	glBegin(GL_LINE_LOOP);
+	glVertex2d(x - 0.015, y - 0.015);
+	glVertex2d(x + 0.015, y - 0.015);
+	glVertex2d(x + 0.015, y + 0.015);
+	glVertex2d(x - 0.015, y + 0.015);
+	glEnd();
+	update();
+}
+
+
+void SheetCanvas::Mouse(double x, double y) {
+	GLint viewport[4];
+	GLdouble modelview[16], projection[16];
+	GLfloat wx = x, wy, wz;
+
+	glGetIntegerv(GL_VIEWPORT, viewport);
+	y = viewport[3] - y;
+	wy = y;
+	glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
+	glGetDoublev(GL_PROJECTION_MATRIX, projection);
+	glReadPixels(x, y, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &wz);
+	gluUnProject(wx, wy, wz, modelview, projection, viewport, &ox, &oy, &oz);
+	//glutPostRedisplay();
 }
