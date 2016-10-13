@@ -45,6 +45,7 @@ private:
 
 	void draw();
 	void drawVertex(SkeletonVertex* v);
+	void drawBone(SkeletonVertex* v1, SkeletonVertex* v2);
 	void Mouse(double x, double y);
 
 	public slots:

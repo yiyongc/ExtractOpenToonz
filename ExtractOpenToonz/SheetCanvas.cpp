@@ -94,12 +94,19 @@ void SheetCanvas::paintGL() {
 	glRotatef(yRot / 16.0, 0.0, 1.0, 0.0);
 	glRotatef(zRot / 16.0, 0.0, 0.0, 1.0);
 	//draw();
-
+	
 	if (drawSkel == false)
 		draw();
-	else {
+	else 
+	{
 		for (int i = 0; i < m_skeleton->getVertexCount(); i++) {
-			drawVertex(m_skeleton->getVertices()[i]);
+			SkeletonVertex* v1 = m_skeleton->getVertices()[i];
+			int parent = v1->getParent();
+			if (parent != -1) {
+				SkeletonVertex* v2 = m_skeleton->getVertices()[parent];
+				drawBone(v1, v2);
+			}
+			drawVertex(v1);
 		}
 	}
 }
@@ -202,10 +209,8 @@ void SheetCanvas::draw() {
 void SheetCanvas::drawVertex(SkeletonVertex* v) {
 	double x = v->getXPos();
 	double y = v->getYPos();
-
-	
-
-	glBegin(GL_LINE_LOOP);
+	qglColor(Qt::red);
+	glBegin(GL_POLYGON);
 	glVertex2d(x - 0.015, y - 0.015);
 	glVertex2d(x + 0.015, y - 0.015);
 	glVertex2d(x + 0.015, y + 0.015);
@@ -228,4 +233,24 @@ void SheetCanvas::Mouse(double x, double y) {
 	glReadPixels(x, y, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &wz);
 	gluUnProject(wx, wy, wz, modelview, projection, viewport, &ox, &oy, &oz);
 	//glutPostRedisplay();
+}
+
+void SheetCanvas::drawBone(SkeletonVertex* v1, SkeletonVertex* v2) {
+	glDisable(GL_LIGHTING);
+	qglColor(QColor(250, 184, 70));
+	glLineWidth(2.0f);  // Yellow/Orange-ish line center
+
+	glBegin(GL_LINES);
+	glVertex2d(v1->getXPos(), v1->getYPos());
+	glVertex2d(v2->getXPos(), v2->getYPos());
+	glEnd();
+
+
+	qglColor(Qt::black);
+	glLineWidth(4.0f);  // Black border
+
+	glBegin(GL_LINES);
+	glVertex2d(v1->getXPos(), v1->getYPos());
+	glVertex2d(v2->getXPos(), v2->getYPos());
+	glEnd();
 }
