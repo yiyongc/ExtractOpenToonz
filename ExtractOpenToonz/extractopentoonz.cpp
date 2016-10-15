@@ -20,6 +20,7 @@ ExtractOpenToonz::ExtractOpenToonz(QWidget *parent)
 	bodyLayout->addWidget(menubar);
 
 	SheetCanvas* m_canvas = new SheetCanvas;
+
 	
 	bodyLayout->addWidget(m_canvas);
 

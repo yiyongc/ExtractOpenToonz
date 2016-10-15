@@ -1,11 +1,17 @@
 #include "SheetCanvas.h"
-
+#include <qtimer.h>
+#include <qvector3d.h>
 
 SheetCanvas::SheetCanvas(QWidget* parent) {
 	xRot = 0;
 	yRot = 0;
 	zRot = 0;
 	m_skeleton = NULL;
+
+	//Auto-updates widget every 10ms
+	QTimer* timer = new QTimer(this);
+	connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+	timer->start(10);
 }
 
 SheetCanvas::~SheetCanvas() {
@@ -94,10 +100,12 @@ void SheetCanvas::paintGL() {
 	glRotatef(yRot / 16.0, 0.0, 1.0, 0.0);
 	glRotatef(zRot / 16.0, 0.0, 0.0, 1.0);
 	//draw();
-	
-	if (drawSkel == false)
-		draw();
-	else 
+	char message1[50];
+	sprintf(message1, "Currently Selected Vertex: %d", selectedVertex);
+	drawMessage(0, message1);
+
+
+	if (drawSkel != false)
 	{
 		for (int i = 0; i < m_skeleton->getVertexCount(); i++) {
 			SkeletonVertex* v1 = m_skeleton->getVertices()[i];
@@ -108,6 +116,8 @@ void SheetCanvas::paintGL() {
 			}
 			drawVertex(v1);
 		}
+
+		highlightSelectedVertex();
 	}
 }
 
@@ -123,6 +133,9 @@ void SheetCanvas::resizeGL(int width, int height) {
 	glOrtho(-2, +2, -2, +2, 1.0, 15.0);
 #endif
 	glMatrixMode(GL_MODELVIEW);
+
+	win_width = width;
+	win_height = height;
 }
 
 QSize SheetCanvas::minimumSizeHint() const
@@ -137,102 +150,106 @@ QSize SheetCanvas::sizeHint() const
 
 void SheetCanvas::mousePressEvent(QMouseEvent *event) {
 	lastPos = event->pos();
+	bool collision = false;
 
 	if (m_skeleton == NULL) {
 		m_skeleton = new Skeleton();
 		drawSkel = true;
 	}
-	Mouse(lastPos.x(), lastPos.y());
-	SkeletonVertex* vertexToAdd = new SkeletonVertex(ox, oy);
-	vertexToAdd->setID(m_skeleton->getVertexCount());
-	m_skeleton->addVertex(vertexToAdd);
-	m_skeleton->setSelectedVertex(vertexToAdd->getID());
+	mouseToWorld(lastPos.x(), lastPos.y());
+
+	for (int i = 0; i < m_skeleton->getVertexCount(); i++) {
+		SkeletonVertex* v1 = m_skeleton->getVertices()[i];
+
+		QVector2D vertexCenter(v1->getXPos(), v1->getYPos());
+
+		collision = clickCollision(vertexCenter);
+		if (collision) {
+			m_skeleton->setSelectedVertex(i);
+			selectedVertex = i;
+			break;
+		}
+	}
+
+	if (!collision) {
+		SkeletonVertex* vertexToAdd = new SkeletonVertex(objX, objY);
+		vertexToAdd->setID(m_skeleton->getVertexCount());
+		m_skeleton->addVertex(vertexToAdd);
+		m_skeleton->setSelectedVertex(vertexToAdd->getID());
+		selectedVertex = vertexToAdd->getID();
+	}
 
 }
 
 void SheetCanvas::mouseMoveEvent(QMouseEvent *event) {
-	int dx = event->x() - lastPos.x();
-	int dy = event->y() - lastPos.y();
+	//int dx = event->x() - lastPos.x();
+	//int dy = event->y() - lastPos.y();
 
-	if (event->buttons() & Qt::LeftButton) {
-		setXRotation(xRot + 8 * dy);
-		setYRotation(yRot + 8 * dx);
-	}
-	else if (event->buttons() & Qt::RightButton) {
-		setXRotation(xRot + 8 * dy);
-		setZRotation(zRot + 8 * dx);
-	}
+	//if (event->buttons() & Qt::LeftButton) {
+	//	setXRotation(xRot + 8 * dy);
+	//	setYRotation(yRot + 8 * dx);
+	//}
+	//else if (event->buttons() & Qt::RightButton) {
+	//	setXRotation(xRot + 8 * dy);
+	//	setZRotation(zRot + 8 * dx);
+	//}
 
-	lastPos = event->pos();
+	//lastPos = event->pos();
 }
 
+//
+//
+//void SheetCanvas::draw() {
+//	//Draws a pyramid
+//
+//	qglColor(Qt::red);
+//	glBegin(GL_QUADS);
+//	glNormal3f(0, 0, -1);
+//	glVertex3f(-1, -1, 0);
+//	glVertex3f(-1, 1, 0);
+//	glVertex3f(1, 1, 0);
+//	glVertex3f(1, -1, 0);
+//
+//	glEnd();
+//	glBegin(GL_TRIANGLES);
+//	glNormal3f(0, -1, 0.707);
+//	glVertex3f(-1, -1, 0);
+//	glVertex3f(1, -1, 0);
+//	glVertex3f(0, 0, 1.2);
+//	glEnd();
+//	glBegin(GL_TRIANGLES);
+//	glNormal3f(1, 0, 0.707);
+//	glVertex3f(1, -1, 0);
+//	glVertex3f(1, 1, 0);
+//	glVertex3f(0, 0, 1.2);
+//	glEnd();
+//	glBegin(GL_TRIANGLES);
+//	glNormal3f(0, 1, 0.707);
+//	glVertex3f(1, 1, 0);
+//	glVertex3f(-1, 1, 0);
+//	glVertex3f(0, 0, 1.2);
+//	glEnd();
+//	glBegin(GL_TRIANGLES);
+//	glNormal3f(-1, 0, 0.707);
+//	glVertex3f(-1, 1, 0);
+//	glVertex3f(-1, -1, 0);
+//	glVertex3f(0, 0, 1.2);
+//	glEnd();
+//}
 
-
-void SheetCanvas::draw() {
-	//Draws a pyramid
-
-	qglColor(Qt::red);
-	glBegin(GL_QUADS);
-	glNormal3f(0, 0, -1);
-	glVertex3f(-1, -1, 0);
-	glVertex3f(-1, 1, 0);
-	glVertex3f(1, 1, 0);
-	glVertex3f(1, -1, 0);
-
-	glEnd();
-	glBegin(GL_TRIANGLES);
-	glNormal3f(0, -1, 0.707);
-	glVertex3f(-1, -1, 0);
-	glVertex3f(1, -1, 0);
-	glVertex3f(0, 0, 1.2);
-	glEnd();
-	glBegin(GL_TRIANGLES);
-	glNormal3f(1, 0, 0.707);
-	glVertex3f(1, -1, 0);
-	glVertex3f(1, 1, 0);
-	glVertex3f(0, 0, 1.2);
-	glEnd();
-	glBegin(GL_TRIANGLES);
-	glNormal3f(0, 1, 0.707);
-	glVertex3f(1, 1, 0);
-	glVertex3f(-1, 1, 0);
-	glVertex3f(0, 0, 1.2);
-	glEnd();
-	glBegin(GL_TRIANGLES);
-	glNormal3f(-1, 0, 0.707);
-	glVertex3f(-1, 1, 0);
-	glVertex3f(-1, -1, 0);
-	glVertex3f(0, 0, 1.2);
-	glEnd();
-}
+//----- Drawing Functions -----//
 
 void SheetCanvas::drawVertex(SkeletonVertex* v) {
 	double x = v->getXPos();
 	double y = v->getYPos();
-	qglColor(Qt::red);
+	qglColor(Qt::blue);
 	glBegin(GL_POLYGON);
-	glVertex2d(x - 0.015, y - 0.015);
-	glVertex2d(x + 0.015, y - 0.015);
-	glVertex2d(x + 0.015, y + 0.015);
-	glVertex2d(x - 0.015, y + 0.015);
+	glVertex2d(x - vertexRadius, y - vertexRadius);
+	glVertex2d(x + vertexRadius, y - vertexRadius);
+	glVertex2d(x + vertexRadius, y + vertexRadius);
+	glVertex2d(x - vertexRadius, y + vertexRadius);
 	glEnd();
 	update();
-}
-
-
-void SheetCanvas::Mouse(double x, double y) {
-	GLint viewport[4];
-	GLdouble modelview[16], projection[16];
-	GLfloat wx = x, wy, wz;
-
-	glGetIntegerv(GL_VIEWPORT, viewport);
-	y = viewport[3] - y;
-	wy = y;
-	glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
-	glGetDoublev(GL_PROJECTION_MATRIX, projection);
-	glReadPixels(x, y, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &wz);
-	gluUnProject(wx, wy, wz, modelview, projection, viewport, &ox, &oy, &oz);
-	//glutPostRedisplay();
 }
 
 void SheetCanvas::drawBone(SkeletonVertex* v1, SkeletonVertex* v2) {
@@ -253,4 +270,101 @@ void SheetCanvas::drawBone(SkeletonVertex* v1, SkeletonVertex* v2) {
 	glVertex2d(v1->getXPos(), v1->getYPos());
 	glVertex2d(v2->getXPos(), v2->getYPos());
 	glEnd();
+}
+
+void SheetCanvas::highlightSelectedVertex() {
+	int selected = m_skeleton->getSelectedVertex();
+	SkeletonVertex* selectedVertex = m_skeleton->getVertices().at(selected);
+	float highlightBorder = vertexRadius + 0.005;
+
+
+	qglColor(Qt::red);
+	glLineWidth(2.0f);
+	glBegin(GL_LINE_LOOP);
+	glVertex2d(selectedVertex->getXPos() - highlightBorder, selectedVertex->getYPos() - highlightBorder);
+	glVertex2d(selectedVertex->getXPos() + highlightBorder, selectedVertex->getYPos() - highlightBorder);
+	glVertex2d(selectedVertex->getXPos() + highlightBorder, selectedVertex->getYPos() + highlightBorder);
+	glVertex2d(selectedVertex->getXPos() - highlightBorder, selectedVertex->getYPos() + highlightBorder);
+	glEnd();
+	update();
+}
+
+void  SheetCanvas::drawMessage(int line_no, const char * message)
+{
+	int   i;
+	if (message == NULL)
+		return;
+
+	// 
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+	gluOrtho2D(0.0, win_width, win_height, 0.0);
+
+	// 
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glLoadIdentity();
+
+	// 
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
+
+	//
+	glColor3f(1.0, 0.0, 0.0);
+	glRasterPos2i(8, 24 + 18 * line_no);
+	for (i = 0; message[i] != '\0'; i++)
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, message[i]);
+
+	// ?
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_LIGHTING);
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+	glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+}
+
+//----- Mouse related functions -----//
+
+void SheetCanvas::mouseToWorld(double x, double y) {
+	//Use of QT to determine x, y position on the widget
+	x = this->mapFromGlobal(QCursor::pos()).x();
+	y = this->mapFromGlobal(QCursor::pos()).y();
+	
+	//Setting up of view, model, projection matrices
+	GLint viewport[4];
+	glGetIntegerv(GL_VIEWPORT, viewport);
+
+	GLdouble modelview[16];
+	glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
+
+	GLdouble projection[16];
+	glGetDoublev(GL_PROJECTION_MATRIX, projection);
+
+	GLfloat winX, winY, winZ;
+
+
+	winX = (float)x;
+	//Convert normal coordinate to OpenGL-format coordinate
+	winY = (float)viewport[3] - y;
+
+	//Obtain depth
+	glReadPixels(winX, winY, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &winZ);
+
+	//Obtain values for mouse ray vector coordinates
+	gluUnProject(winX, winY, 0, modelview, projection, viewport, &startX, &startY, &startZ);
+	gluUnProject(winX, winY, winZ, modelview, projection, viewport, &objX, &objY, &objZ);
+}
+
+
+bool SheetCanvas::clickCollision(QVector2D pointCenter) {
+	QVector2D mouseClickPos(objX, objY);
+
+	float distance = pointCenter.distanceToPoint(mouseClickPos);
+
+	if (distance <= vertexRadius + 0.01)
+		return true;
+	else
+		return false;
 }

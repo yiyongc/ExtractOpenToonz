@@ -40,13 +40,26 @@ private:
 	QPoint lastPos;
 	bool drawSkel = false;
 	Skeleton* m_skeleton;
+	float vertexRadius = 0.015;
+	int win_width, win_height;
 
-	GLdouble ox = 0.0, oy = 0.0, oz = 0.0;
 
-	void draw();
+	int selectedVertex = -1;
+
+
+
+
+	GLdouble startX = 0.0, startY = 0.0, startZ = 0.0;
+	GLdouble objX = 0.0, objY = 0.0, objZ = 0.0;
+
+	//void draw();
 	void drawVertex(SkeletonVertex* v);
 	void drawBone(SkeletonVertex* v1, SkeletonVertex* v2);
-	void Mouse(double x, double y);
+	void mouseToWorld(double x, double y);
+	void highlightSelectedVertex();
+	void drawMessage(int line, const char* msg);
+	//bool rayCollision(QVector3D pointCenter);
+	bool clickCollision(QVector2D pointCenter);
 
 	public slots:
 	void setXRotation(int angle);
