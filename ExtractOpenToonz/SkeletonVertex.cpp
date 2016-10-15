@@ -39,3 +39,11 @@ double SkeletonVertex::getXPos() {
 double SkeletonVertex::getYPos() {
 	return yPos;
 }
+
+void SkeletonVertex::setXPos(double x) {
+	xPos = x;
+}
+
+void SkeletonVertex::setYPos(double y) {
+	yPos = y;
+}

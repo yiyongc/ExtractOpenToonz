@@ -26,7 +26,9 @@ protected:
 	static void qNormalizeAngle(int &angle);
 
 	void mousePressEvent(QMouseEvent *event);
+	void mouseReleaseEvent(QMouseEvent *event);
 	void mouseMoveEvent(QMouseEvent *event);
+	void keyPressEvent(QKeyEvent* event);
 
 	QSize minimumSizeHint() const;
 	QSize sizeHint() const;
@@ -40,26 +42,32 @@ private:
 	QPoint lastPos;
 	bool drawSkel = false;
 	Skeleton* m_skeleton;
-	float vertexRadius = 0.015;
+	float vertexRadius = 0.020;
 	int win_width, win_height;
 
-
+	int idToAdd = 0;
+	bool vertexMoveSelected = false;
 	int selectedVertex = -1;
+	bool clickCollided = false;
 
+	bool drawKey = false;
 
-
-
-	GLdouble startX = 0.0, startY = 0.0, startZ = 0.0;
 	GLdouble objX = 0.0, objY = 0.0, objZ = 0.0;
 
+	//drawing functions 
 	//void draw();
 	void drawVertex(SkeletonVertex* v);
-	void drawBone(SkeletonVertex* v1, SkeletonVertex* v2);
-	void mouseToWorld(double x, double y);
+	void drawBone(SkeletonVertex* v1);
 	void highlightSelectedVertex();
 	void drawMessage(int line, const char* msg);
-	//bool rayCollision(QVector3D pointCenter);
+	void drawSkeleton();
+
+	//mouse functions
+	void mouseToWorld(double x, double y);
 	bool clickCollision(QVector2D pointCenter);
+
+
+	void updateSelectedVertex(int id);
 
 	public slots:
 	void setXRotation(int angle);

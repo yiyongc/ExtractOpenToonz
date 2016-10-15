@@ -16,6 +16,7 @@ public:
 	int getSelectedVertex();
 	void setSelectedVertex(int vertexID);
 	std::vector<SkeletonVertex*> getVertices();
+	SkeletonVertex* getVertex(int vertexID);
 
 private:
 	std::vector<SkeletonVertex*> joints;

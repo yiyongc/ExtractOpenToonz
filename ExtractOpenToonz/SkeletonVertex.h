@@ -16,6 +16,8 @@ public:
 
 	double getXPos();
 	double getYPos();
+	void setXPos(double x);
+	void setYPos(double y);
 
 private:
 	double xPos;

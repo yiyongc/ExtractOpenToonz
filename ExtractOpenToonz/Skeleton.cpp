@@ -25,10 +25,23 @@ int Skeleton::getVertexCount() {
 	return joints.size();
 }
 
+SkeletonVertex* Skeleton::getVertex(int vertexID) {
+	for (int i = 0; i < joints.size(); i++) {
+		if (joints.at(i)->getID() == vertexID)
+			return joints.at(i);
+	}
+	return NULL;
+}
+
 bool Skeleton::removeVertex(int id) {
 	for (int i = 0; i < joints.size(); i++) {
 		if (joints.at(i)->getID() == id) {
+			for (int j = 0; j < joints.size(); j++) {
+				if (joints.at(j)->getParent() == id)
+					joints.at(j)->setParent(joints.at(i)->getParent());
+			}
 			joints.erase(joints.begin() + i);
+
 			return true;
 		}
 	}
